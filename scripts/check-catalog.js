@@ -30,6 +30,8 @@ for (const k of ["freeShippingOver", "flatShipping", "taxRate"]) {
   if (typeof settings[k] !== "number" || settings[k] < 0) err(`settings.${k} must be a number ≥ 0`);
 }
 
+if (!/^pk_(test|live)_/.test(settings.stripePublishableKey || "")) err("settings.stripePublishableKey must start with pk_test_ or pk_live_");
+
 dupes(products.map(p => p.id)).forEach(d => err(`Duplicate product id "${d}"`));
 dupes(products.map(p => p.slug)).forEach(d => err(`Duplicate product slug "${d}"`));
 
@@ -80,7 +82,7 @@ try {
   for (const p of products) {
     if (server.PRICES[p.id] !== p.price) err(`Server price for "${p.id}" doesn't match data.js`);
   }
-  const t = server.priceCart([{ productId: products[0].id, qty: 1 }]);
+  const t = server.priceCart([{ productId: products[0].id, colorId: products[0].colors[0].id, sizeId: (products[0].sizes.find(z => !z.soldOut) || {}).id, qty: 1 }]);
   const expect = data.computeTotals(products[0].price);
   if (t.total !== expect.total) err("Server cart total differs from storefront total");
 } catch (e) {

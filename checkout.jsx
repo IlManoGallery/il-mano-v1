@@ -1,7 +1,5 @@
 /* ─── Checkout (real Stripe Elements, frontend-only) ──────── */
 
-const STRIPE_PK = "pk_test_51TZ2aLFTN5SvkkHluH6iilAWGVPSHzBwXXNn3JtAy25m2cg0T8Ou3tsdEkPX1d5DjHv03ZYohzsq39JIG9l2Oare00NoOGgmCL";
-
 const Checkout = ({ open, onClose, items, findProduct, onComplete }) => {
   const [step, setStep] = React.useState(0); // 0=contact, 1=delivery, 2=pay, 3=success
   const [contact, setContact] = React.useState({ email: "", phone: "" });
@@ -43,7 +41,7 @@ const Checkout = ({ open, onClose, items, findProduct, onComplete }) => {
       return;
     }
     if (!stripeRef.current) {
-      stripeRef.current = window.Stripe(STRIPE_PK);
+      stripeRef.current = window.Stripe(window.IL_MANO_DATA.settings.stripePublishableKey);
     }
     const stripe = stripeRef.current;
     const elements = stripe.elements({

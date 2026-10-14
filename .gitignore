@@ -6,3 +6,8 @@ node_modules/
 .DS_Store
 npm-debug.log*
 .env*
+
+# internal notes, not for the client
+CLAUDE.md
+WORKFLOW.md
+.claude/

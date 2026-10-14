@@ -5,10 +5,10 @@
   "description": "IL MANO storefront (static frontend) + Vercel serverless order backend",
   "scripts": {
     "local": "vercel dev",
-    "check": "node scripts/check-catalog.js",
+    "check": "node scripts/check-catalog.js && node scripts/check-api.js",
     "images": "node scripts/optimize-images.js",
     "build:content": "node scripts/build-content.js",
-    "build": "node scripts/build-content.js && node scripts/optimize-images.js && node scripts/check-catalog.js"
+    "build": "node scripts/build-content.js && node scripts/optimize-images.js && node scripts/check-catalog.js && node scripts/check-api.js"
   },
   "dependencies": {
     "@upstash/ratelimit": "^2.0.5",

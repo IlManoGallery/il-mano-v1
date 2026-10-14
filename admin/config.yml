@@ -89,6 +89,7 @@ collections:
           - { label: "Free shipping over (USD)", name: freeShippingOver, widget: number, value_type: int, min: 0, hint: "Orders ABOVE this ship free" }
           - { label: "Flat shipping rate (USD)", name: flatShipping, widget: number, value_type: int, min: 0 }
           - { label: "Tax rate", name: taxRate, widget: number, value_type: float, min: 0, max: 1, step: 0.001, hint: "As a decimal: 0.085 = 8.5%" }
+          - { label: "Stripe publishable key", name: stripePublishableKey, widget: string, pattern: ["^pk_(test|live)_", "Must start with pk_test_ or pk_live_"], hint: "Stripe Dashboard → Developers → API keys. Use the pk_live_ key at launch, together with sk_live_ on Vercel." }
       - name: home
         label: "Home page"
         file: content/home.json

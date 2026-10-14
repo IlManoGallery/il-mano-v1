@@ -7,6 +7,8 @@ const BG = "#f5f4f0";
 const LINE = "#ddd8cc";
 const TOBACCO = "#6b4a2b";
 
+// Customer-typed text goes into HTML — escape it.
+const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 const fmt = (cents) => "$" + (cents / 100).toFixed(2);
 const asset = (siteUrl, path) => `${siteUrl}/${path}`;
 
@@ -34,12 +36,12 @@ function orderConfirmationHtml(order) {
   const siteUrl = order.siteUrl || "https://ilmano.com";
 
   const rows = order.cart.map(it => {
-    const name = NAMES[it.id] || it.id;
+    const name = esc(NAMES[it.id] || it.id);
     const price = PRICES[it.id] || 0;
-    const colorName = COLOR_NAMES[it.id]?.[it.c] || "";
+    const colorName = esc(COLOR_NAMES[it.id]?.[it.c] || "");
     const imgPath = IMAGES[it.id]?.[it.c] || Object.values(IMAGES[it.id] || {})[0];
     const imgUrl = imgPath ? asset(siteUrl, imgPath) : "";
-    const metaBits = [colorName, it.s ? it.s.toUpperCase() : null, `Qty ${it.q}`].filter(Boolean).join(" · ");
+    const metaBits = [colorName, it.s ? esc(it.s).toUpperCase() : null, `Qty ${it.q}`].filter(Boolean).join(" · ");
     return `
       <tr>
         <td width="72" style="padding:16px 16px 16px 0;border-bottom:1px solid ${LINE};vertical-align:top;">
@@ -64,10 +66,10 @@ function orderConfirmationHtml(order) {
 
   const s = order.shippingAddress;
   const shipToBlock = s ? `
-    ${s.fn || s.ln ? `${s.fn} ${s.ln}<br/>` : ""}
-    ${s.a1}${s.a2 ? ", " + s.a2 : ""}<br/>
-    ${s.city}${s.state ? ", " + s.state : ""} ${s.postal}<br/>
-    ${s.country}` : "On file with your order.";
+    ${s.fn || s.ln ? `${esc(s.fn)} ${esc(s.ln)}<br/>` : ""}
+    ${esc(s.a1)}${s.a2 ? ", " + esc(s.a2) : ""}<br/>
+    ${esc(s.city)}${s.state ? ", " + esc(s.state) : ""} ${esc(s.postal)}<br/>
+    ${esc(s.country)}` : "On file with your order.";
 
   const paymentBlock = order.card
     ? `${order.card.brand.charAt(0).toUpperCase() + order.card.brand.slice(1)} ending ${order.card.last4}<br/>Authorized ${new Date(order.createdAt).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}`
@@ -104,7 +106,7 @@ function orderConfirmationHtml(order) {
             <td style="padding:32px 24px 0;">
               <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:${TOBACCO};">Order received</div>
               <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:28px;line-height:1.3;color:${INK};padding-top:8px;">
-                Thank you${order.firstName ? ", " + order.firstName : ""}.
+                Thank you${order.firstName ? ", " + esc(order.firstName) : ""}.
               </div>
               <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:1.7;color:${INK};padding-top:16px;">
                 Your piece is now on the bench in our Los Angeles workshop, where every garment is inspected by hand before it leaves. Your card has been authorized, not charged — we only complete the charge once your order ships, and you'll receive tracking the moment it's on its way.

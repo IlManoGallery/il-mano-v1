@@ -48,7 +48,7 @@ module.exports = async (req, res) => {
       payment_method_types: ["card"], // only card supports manual capture reliably; the checkout UI only offers card today
       receipt_email: email,
       metadata: {
-        cart: JSON.stringify(items.map(it => ({ id: it.productId, c: it.colorId, s: it.sizeId, q: it.qty }))),
+        cart: items.map(it => [it.productId, it.colorId, it.sizeId, it.qty].join(":")).join(";"), // id:color:size:qty;…
         subtotal: String(subtotal),
         shipping: String(shipping),
         tax: String(tax),

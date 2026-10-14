@@ -36,7 +36,10 @@ async function orderFromIntent(pi, { stripe, siteUrl }) {
     currency: pi.currency,
     email: pi.receipt_email,
     firstName: pi.metadata?.firstName || "",
-    cart: pi.metadata?.cart ? JSON.parse(pi.metadata.cart) : [],
+    cart: (pi.metadata?.cart || "").split(";").filter(Boolean).map(l => {
+      const [id, c, s, q] = l.split(":");
+      return { id, c, s, q: Number(q) };
+    }),
     subtotal: Number(pi.metadata?.subtotal || 0),
     shipping: Number(pi.metadata?.shipping || 0),
     tax: Number(pi.metadata?.tax || 0),
@@ -69,18 +72,22 @@ module.exports = async (req, res) => {
   let order = null;
   if (event.type === "payment_intent.amount_capturable_updated") {
     order = await orderFromIntent(event.data.object, { stripe, siteUrl });
-    // Email first and independently of Redis, so a storage outage (or missing Upstash
-    // config) never swallows the order notification.
-    await sendOrderConfirmation(order);
   }
 
+  let redis;
   try {
-    const redis = getRedis();
+    redis = getRedis();
 
-    if (event.type === "payment_intent.amount_capturable_updated") {
-      // Card authorized successfully — funds are held, not yet charged.
-      await redis.set(`order:${order.id}`, order);
-      await redis.lpush("orders:authorized", order.id);
+    if (order) {
+      // Stripe delivers events at least once: skip a repeat so there's one email and one list entry.
+      // Redis failing throws to the catch below → 500 → Stripe retries, so no order is dropped.
+      const first = await redis.set(`order-seen:${order.id}`, 1, { nx: true, ex: 60 * 60 * 24 * 7 });
+      if (first) {
+        // Card authorized successfully — funds are held, not yet charged.
+        await redis.set(`order:${order.id}`, order);
+        await redis.lpush("orders:authorized", order.id);
+        await sendOrderConfirmation(order);
+      }
     }
 
     if (event.type === "payment_intent.canceled" || event.type === "payment_intent.payment_failed") {
@@ -103,8 +110,7 @@ module.exports = async (req, res) => {
     res.status(200).json({ received: true });
   } catch (e) {
     console.error("[stripe-webhook] handler error", e);
-    // Still 200 so Stripe doesn't hammer retries for an internal storage hiccup on an
-    // already-verified event; the order can be reconciled from the Stripe dashboard.
-    res.status(200).json({ received: true, warning: "order storage failed" });
+    if (order) await redis?.del(`order-seen:${order.id}`).catch(() => {}); // let the retry redo it
+    res.status(500).json({ error: "order storage failed" }); // Stripe retries with backoff
   }
 };

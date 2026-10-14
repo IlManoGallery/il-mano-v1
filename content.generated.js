@@ -3,7 +3,8 @@
  "store": {
   "freeShippingOver": 250,
   "flatShipping": 12,
-  "taxRate": 0.085
+  "taxRate": 0.085,
+  "stripePublishableKey": "pk_test_51TZ2aLFTN5SvkkHluH6iilAWGVPSHzBwXXNn3JtAy25m2cg0T8Ou3tsdEkPX1d5DjHv03ZYohzsq39JIG9l2Oare00NoOGgmCL"
  },
  "home": {
   "marqueeItems": [
@@ -127,15 +128,13 @@
  },
  "products": [
   {
-   "id": "bag-duffle",
-   "slug": "heritage-duffle",
-   "name": "Heritage Duffle",
    "categoryKey": "bags",
-   "price": 280,
+   "defaultColor": "saddle",
    "badge": "Limited",
-   "rating": 5,
-   "reviews": 22,
-   "description": "A weekender carved from full-grain saddle leather, finished with solid brass hardware that develops its own patina with travel. Internal canvas lining, debossed ILMANO patch, removable shoulder strap with luggage tag. Made for the long road.",
+   "price": 300,
+   "name": "Legacy Duffle",
+   "slug": "heritage-duffle",
+   "order": 3,
    "colors": [
     {
      "id": "saddle",
@@ -147,7 +146,7 @@
      "homeBadge": "Limited"
     }
    ],
-   "defaultColor": "saddle",
+   "care": "Condition with neutral leather balm twice yearly. Keep dry; patina is the point.",
    "sizes": [
     {
      "id": "os",
@@ -155,6 +154,7 @@
      "soldOut": false
     }
    ],
+   "delivery": "Complimentary worldwide shipping. 30 day return window on Limited pieces.",
    "specs": [
     {
      "k": "Material",
@@ -173,20 +173,19 @@
      "v": "Heavy canvas, two interior pockets"
     }
    ],
-   "care": "Condition with neutral leather balm twice yearly. Keep dry; patina is the point.",
-   "delivery": "Complimentary worldwide shipping. 30-day return window on Limited pieces.",
-   "order": 3
+   "reviews": 22,
+   "id": "bag-duffle",
+   "description": "A weekender carved from full grain saddle leather, finished with solid brass hardware that develops its own patina with travel. Internal canvas lining, debossed ILMANO patch, removable shoulder strap with luggage tag. Made for the long road.",
+   "rating": 5
   },
   {
-   "id": "cap-trail",
-   "slug": "trail-cap",
-   "name": "Trail Cap",
    "categoryKey": "hats",
-   "price": 55,
+   "defaultColor": "black",
    "badge": "",
-   "rating": 4.8,
-   "reviews": 64,
-   "description": "Six-panel structured trucker with a hand-finished cowhide patch debossed with the ILMANO mark. Snap back fits a wide range; perforated mesh keeps the back cool through the Mojave summer.",
+   "price": 65,
+   "name": "Rodeo Cap",
+   "slug": "trail-cap",
+   "order": 2,
    "colors": [
     {
      "id": "black",
@@ -216,7 +215,7 @@
      "homeBadge": ""
     }
    ],
-   "defaultColor": "black",
+   "care": "Spot clean only. Reshape and air dry.",
    "sizes": [
     {
      "id": "os",
@@ -224,6 +223,7 @@
      "soldOut": false
     }
    ],
+   "delivery": "Complimentary worldwide shipping over $250. 14-day home trial.",
    "specs": [
     {
      "k": "Material",
@@ -242,20 +242,19 @@
      "v": "Brass snap-back, 7-position"
     }
    ],
-   "care": "Spot clean only. Reshape and air dry.",
-   "delivery": "Complimentary worldwide shipping over $250. 14-day home trial.",
-   "order": 2
+   "reviews": 64,
+   "id": "cap-trail",
+   "description": "Six-panel structured trucker with a hand-finished cowhide patch debossed with the ILMANO mark. Snap back fits a wide range; perforated mesh keeps the back cool through the Mojave summer.",
+   "rating": 4.8
   },
   {
-   "id": "hoodie-classic",
-   "slug": "classic-hoodie",
-   "name": "Classic Hoodie",
    "categoryKey": "hoodies",
-   "price": 100,
+   "defaultColor": "black",
    "badge": "New",
-   "rating": 4.9,
-   "reviews": 128,
-   "description": "Inspired by the weathered textures of the American West and refined for the urban landscape. Crafted from premium 100% French Terry and finished with a specialized LA-dye process to achieve a soft, lived-in patina from the first wear. A rebellious take on luxury basics — built to age beautifully and endure the grind.",
+   "price": 150,
+   "name": "Retro Hoodie",
+   "slug": "classic-hoodie",
+   "order": 1,
    "colors": [
     {
      "id": "black",
@@ -297,7 +296,7 @@
      "homeBadge": "Hot"
     }
    ],
-   "defaultColor": "black",
+   "care": "Wash inside out, cold. Tumble dry low. Do not bleach. Iron reverse, low.",
    "sizes": [
     {
      "id": "xs",
@@ -330,6 +329,7 @@
      "soldOut": false
     }
    ],
+   "delivery": "Complimentary worldwide shipping over $250. 14-day home trial with prepaid returns.",
    "specs": [
     {
      "k": "Material",
@@ -348,9 +348,10 @@
      "v": "Embroidered ILMANO neck label, woven side seam tag"
     }
    ],
-   "care": "Wash inside out, cold. Tumble dry low. Do not bleach. Iron reverse, low.",
-   "delivery": "Complimentary worldwide shipping over $250. 14-day home trial with prepaid returns.",
-   "order": 1
+   "reviews": 128,
+   "id": "hoodie-classic",
+   "description": "Inspired by the weathered textures of the American West and refined for the urban landscape. Crafted from premium 100% French Terry and finished with a specialized LA-dye process to achieve a soft, lived-in patina from the first wear. A rebellious take on luxury basics — built to age beautifully and endure the grind.",
+   "rating": 4.9
   }
  ],
  "pages": {

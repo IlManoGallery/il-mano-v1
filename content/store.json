@@ -1,5 +1,6 @@
 {
   "freeShippingOver": 250,
   "flatShipping": 12,
-  "taxRate": 0.085
+  "taxRate": 0.085,
+  "stripePublishableKey": "pk_test_51TZ2aLFTN5SvkkHluH6iilAWGVPSHzBwXXNn3JtAy25m2cg0T8Ou3tsdEkPX1d5DjHv03ZYohzsq39JIG9l2Oare00NoOGgmCL"
 }
