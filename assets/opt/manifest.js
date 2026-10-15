@@ -56,6 +56,30 @@
    1400
   ]
  },
+ "assets/exhibitions/crush-cancer/back.webp": {
+  "stem": "exhibitions/crush-cancer/back",
+  "widths": [
+   480,
+   900,
+   1086
+  ]
+ },
+ "assets/exhibitions/crush-cancer/front.webp": {
+  "stem": "exhibitions/crush-cancer/front",
+  "widths": [
+   480,
+   900,
+   1086
+  ]
+ },
+ "assets/exhibitions/crush-cancer/sleeve.webp": {
+  "stem": "exhibitions/crush-cancer/sleeve",
+  "widths": [
+   480,
+   900,
+   1086
+  ]
+ },
  "assets/gallery/hoodie-black-front.webp": {
   "stem": "gallery/hoodie-black-front",
   "widths": [
