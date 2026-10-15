@@ -1,42 +1,84 @@
 {
-  "id": "crush-cancer",
-  "order": 1,
-  "layout": "catalogue",
   "artist": "Nelson De La Nuez",
-  "title": "Crush *Cancer.*",
-  "subtitle": "Wearable art by the King of Pop Art, made with Il Mano Gallery for the PHASE ONE Gala 2026.",
-  "status": "Live auction",
-  "cover": "assets/exhibitions/crush-cancer/back.webp",
   "concept": "Nelson De La Nuez, the King of Pop Art, joined Il Mano Gallery to make a one-of-a-kind wearable piece for PHASE ONE: his iconic French Bulldog, carrying a message we can all stand behind.",
-  "process": "The handprint on the front is the artist's own, applied by hand. Tap the sleeve and an embedded NFC tag opens the film of him placing it.",
-  "quote": "His iconic French Bulldog on the back. His actual handprint on the front, placed by his own hand.",
-  "views": [
-    { "label": "Back", "src": "assets/exhibitions/crush-cancer/back.webp", "alt": "Back of the white hoodie: Nelson De La Nuez's blue French Bulldog under red and black CRUSH CANCER lettering, with his signature patch" },
-    { "label": "Handprint", "src": "assets/exhibitions/crush-cancer/front.webp", "alt": "Front of the hoodie: embroidered IL MANO wordmark and the artist's grey handprint across the chest" },
-    { "label": "NFC sleeve", "src": "assets/exhibitions/crush-cancer/sleeve.webp", "alt": "Sleeve detail: vertical IL MANO tab with the metal hand button, and the MANO hem label" }
-  ],
+  "layout": "vault",
   "artistFilm": {
     "src": "assets/exhibitions/crush-cancer/artist.mp4",
     "heading": "One hand, *one piece.*",
     "text": "De La Nuez on the piece, then the moment he presses his hand into the cotton. Tap the sleeve of the finished piece and its NFC tag brings you back to this."
   },
+  "views": [
+    {
+      "label": "Back",
+      "src": "assets/exhibitions/crush-cancer/back.webp",
+      "alt": "Back of the white hoodie: Nelson De La Nuez's blue French Bulldog under red and black CRUSH CANCER lettering, with his signature patch"
+    },
+    {
+      "label": "Handprint",
+      "src": "assets/exhibitions/crush-cancer/front.webp",
+      "alt": "Front of the hoodie: embroidered IL MANO wordmark and the artist's grey handprint across the chest"
+    },
+    {
+      "label": "NFC sleeve",
+      "src": "assets/exhibitions/crush-cancer/sleeve.webp",
+      "alt": "Sleeve detail: vertical IL MANO tab with the metal hand button, and the MANO hem label"
+    }
+  ],
+  "order": 1,
+  "process": "The handprint on the front is the artist's own, applied by hand. Tap the sleeve and an embedded NFC tag opens the film of him placing it.",
+  "cta": {
+    "label": "Bid at PHASE ONE",
+    "url": "https://pro.gofundme.com/live/auction/phase-one-gala-2026/eb9cc7d5-b671-4c61-a6c8-194a1f7a5280/item/4981b9e2-ee07-4fc1-b59a-8b6ab1713a27"
+  },
+  "note": "Bidding closes Sat 17 Oct 2026 · 5:00 PM PDT",
+  "status": "Live auction",
+  "secondary": {
+    "label": "About the artist",
+    "url": "https://kingofpopart.com"
+  },
+  "cover": "assets/exhibitions/crush-cancer/back.webp",
+  "specs": [
+    {
+      "title": "Edition",
+      "body": "Four made, one in each size: S, M, L, XL. De La Nuez keeps three for his own collection, so one piece is available, in the size of your choice."
+    },
+    {
+      "title": "Authentication",
+      "body": "The artist's actual handprint, applied by him. An NFC tag embedded in the sleeve opens the film documenting it."
+    },
+    {
+      "title": "Also included",
+      "body": "Signed copy of De La Nuez's coffee-table book \"High Maintenance\" (Pool Boy cover). 12¼ × 12¼ in hardback, 338 pages, limited print run."
+    },
+    {
+      "title": "Benefiting",
+      "body": "PHASE ONE Gala 2026, a 501(c)(3). Offered in the live auction, donated by Nelson De La Nuez and Il Mano Gallery."
+    }
+  ],
+  "subtitle": "Wearable art by the King of Pop Art, made with Il Mano Gallery for the PHASE ONE Gala 2026.",
+  "title": "Crush *Cancer.*",
+  "id": "crush-cancer",
+  "quote": "His iconic French Bulldog on the back. His actual handprint on the front, placed by his own hand.",
   "productionFilm": {
     "src": "assets/exhibitions/crush-cancer/production.mp4",
     "caption": "Pulled by hand, layer by layer."
   },
-  "specs": [
-    { "title": "Edition", "body": "Four made, one in each size: S, M, L, XL. De La Nuez keeps three for his own collection, so one piece is available, in the size of your choice." },
-    { "title": "Authentication", "body": "The artist's actual handprint, applied by him. An NFC tag embedded in the sleeve opens the film documenting it." },
-    { "title": "Also included", "body": "Signed copy of De La Nuez's coffee-table book \"High Maintenance\" (Pool Boy cover). 12¼ × 12¼ in hardback, 338 pages, limited print run." },
-    { "title": "Benefiting", "body": "PHASE ONE Gala 2026, a 501(c)(3). Offered in the live auction, donated by Nelson De La Nuez and Il Mano Gallery." }
-  ],
   "stats": [
-    { "label": "Made", "value": "04" },
-    { "label": "Available", "value": "01" },
-    { "label": "Size", "value": "S · M · L · XL" },
-    { "label": "Starting bid", "value": "$1,200" }
-  ],
-  "note": "Bidding closes Sat 17 Oct 2026 · 5:00 PM PDT",
-  "cta": { "label": "Bid at PHASE ONE", "url": "https://pro.gofundme.com/live/auction/phase-one-gala-2026/eb9cc7d5-b671-4c61-a6c8-194a1f7a5280/item/4981b9e2-ee07-4fc1-b59a-8b6ab1713a27" },
-  "secondary": { "label": "About the artist", "url": "https://kingofpopart.com" }
+    {
+      "label": "Made",
+      "value": "04"
+    },
+    {
+      "label": "Available",
+      "value": "01"
+    },
+    {
+      "label": "Size",
+      "value": "S · M · L · XL"
+    },
+    {
+      "label": "Starting bid",
+      "value": "$1,200"
+    }
+  ]
 }
