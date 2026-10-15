@@ -78,6 +78,86 @@ collections:
       - { label: "Care instructions", name: care, widget: text }
       - { label: "Delivery note", name: delivery, widget: text, hint: "Mention shipping amounts only if they match Store settings" }
 
+  # ───────────────────── Gallery exhibitions ─────────────────────
+  # One file per artist piece. Listed on /gallery, each opens at /piece?id=<id>.
+  - name: exhibitions
+    label: "Gallery exhibitions"
+    label_singular: Exhibition
+    folder: content/exhibitions
+    extension: json
+    format: json
+    create: true
+    slug: "{{id}}"
+    identifier_field: id
+    summary: "{{order}}. {{artist}} — {{title}}"
+    sortable_fields: [order, artist]
+    media_folder: /assets/exhibitions
+    public_folder: assets/exhibitions
+    fields:
+      - { label: "ID", name: id, widget: string, pattern: ["^[a-z0-9-]+$", "Lowercase letters, numbers and dashes only"], hint: "Used in the web address: /piece?id=crush-cancer" }
+      - { label: "Display order", name: order, widget: number, value_type: int, min: 1, hint: "1 is the featured piece at the top of the gallery" }
+      - { label: Layout, name: layout, widget: select, options: [{ label: "Vault (light, side by side, zoom)", value: vault }, { label: "Catalogue (dark, full-bleed, films)", value: catalogue }] }
+      - { label: Artist, name: artist, widget: string }
+      - { label: "Piece title", name: title, widget: string, hint: "Put *asterisks* around words to set them in italics, e.g. Crush *Cancer.*" }
+      - { label: Subtitle, name: subtitle, widget: text }
+      - { label: "Status badge", name: status, widget: string, required: false, hint: "e.g. Live auction, Available, Sold, Private collection" }
+      - { label: "Cover photo (gallery card)", name: cover, widget: image }
+      - { label: "Concept note", name: concept, widget: text }
+      - { label: "Process note", name: process, widget: text, required: false }
+      - { label: "Pull quote (Catalogue layout)", name: quote, widget: text, required: false }
+      - label: Photos
+        name: views
+        widget: list
+        summary: "{{fields.label}}"
+        fields:
+          - { label: Label, name: label, widget: string }
+          - { label: Photo, name: src, widget: image }
+          - { label: "Description for screen readers", name: alt, widget: string }
+      - label: "Artist film (vertical)"
+        name: artistFilm
+        widget: object
+        required: false
+        fields:
+          - { label: "Video (.mp4)", name: src, widget: file }
+          - { label: Heading, name: heading, widget: string, hint: "*asterisks* = italics" }
+          - { label: Text, name: text, widget: text }
+      - label: "Production film (plays wide, on loop, no sound)"
+        name: productionFilm
+        widget: object
+        required: false
+        fields:
+          - { label: "Video (.mp4)", name: src, widget: file }
+          - { label: Caption, name: caption, widget: string }
+      - label: "Details (Edition, Authentication…)"
+        name: specs
+        widget: list
+        summary: "{{fields.title}}"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Text, name: body, widget: text }
+      - label: "Numbers bar"
+        name: stats
+        widget: list
+        required: false
+        summary: "{{fields.label}}: {{fields.value}}"
+        fields:
+          - { label: Label, name: label, widget: string }
+          - { label: Value, name: value, widget: string }
+      - { label: "Small note under the buttons", name: note, widget: string, required: false }
+      - label: "Main button"
+        name: cta
+        widget: object
+        fields:
+          - { label: Text, name: label, widget: string }
+          - { label: Link, name: url, widget: string }
+      - label: "Second button"
+        name: secondary
+        widget: object
+        required: false
+        fields:
+          - { label: Text, name: label, widget: string }
+          - { label: Link, name: url, widget: string }
+
   # ───────────────────── Store & home page ─────────────────────
   - name: site
     label: Store & Home Page

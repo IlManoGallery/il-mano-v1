@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0a0a" />
   <title>Gallery · IL MANO</title>
-  <meta name="description" content="The IL MANO gallery — Summer 2026 pieces, one at a time." />
+  <meta name="description" content="The IL MANO gallery — artist collaborations, one piece at a time." />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,12 +24,12 @@
   <script src="content.generated.js"></script>
   <script type="text/babel" src="utils.jsx"></script>
   <script type="text/babel" src="sections.jsx"></script>
-  <script type="text/babel" src="gallery.jsx"></script>
+  <script type="text/babel" src="piece.jsx"></script>
   <script type="text/babel">
     ReactDOM.createRoot(document.getElementById("root")).render(
       <>
         <Nav cartCount={0} onOpenCart={() => { window.location.href = "/#collection"; }} transparent={false} />
-        <main><Gallery /></main>
+        <main><Exhibitions /></main>
         <Footer />
       </>
     );
