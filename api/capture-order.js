@@ -1,4 +1,4 @@
-const { getStripe, getRedis } = require("./_lib/clients");
+const { getStripe } = require("./_lib/clients");
 
 // Minimal manual-capture endpoint — call later once an order's been reviewed, to
 // actually charge the card that was authorized at checkout. Not a real admin panel:
@@ -29,12 +29,6 @@ module.exports = async (req, res) => {
   try {
     const stripe = getStripe();
     const captured = await stripe.paymentIntents.capture(paymentIntentId);
-
-    const redis = getRedis();
-    const existing = await redis.get(`order:${paymentIntentId}`);
-    if (existing) {
-      await redis.set(`order:${paymentIntentId}`, { ...existing, status: "captured", capturedAt: new Date().toISOString() });
-    }
 
     res.status(200).json({ status: captured.status, amountCaptured: captured.amount_received });
   } catch (e) {

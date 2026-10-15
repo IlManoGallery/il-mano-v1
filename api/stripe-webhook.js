@@ -1,4 +1,4 @@
-const { getStripe, getRedis } = require("./_lib/clients");
+const { getStripe } = require("./_lib/clients");
 const { sendOrderConfirmation } = require("./_lib/email");
 
 // Stripe needs the raw, unparsed request body to verify the webhook signature.
@@ -68,49 +68,21 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const siteUrl = `https://${req.headers.host}`;
-  let order = null;
+  // Order state lives in Stripe (Dashboard → Payments); no database needed.
   if (event.type === "payment_intent.amount_capturable_updated") {
-    order = await orderFromIntent(event.data.object, { stripe, siteUrl });
+    try {
+      // Stripe delivers events at least once. Re-read the payment (the event may be a stale
+      // snapshot) and skip if we already emailed; any failure → 500 → Stripe retries.
+      const pi = await stripe.paymentIntents.retrieve(event.data.object.id);
+      if (!pi.metadata?.emailed) {
+        await sendOrderConfirmation(await orderFromIntent(pi, { stripe, siteUrl: `https://${req.headers.host}` }));
+        await stripe.paymentIntents.update(pi.id, { metadata: { emailed: "1" } });
+      }
+    } catch (e) {
+      console.error("[stripe-webhook] handler error", e);
+      res.status(500).json({ error: "order processing failed" });
+      return;
+    }
   }
-
-  let redis;
-  try {
-    redis = getRedis();
-
-    if (order) {
-      // Stripe delivers events at least once: skip a repeat so there's one email and one list entry.
-      // Redis failing throws to the catch below → 500 → Stripe retries, so no order is dropped.
-      const first = await redis.set(`order-seen:${order.id}`, 1, { nx: true, ex: 60 * 60 * 24 * 7 });
-      if (first) {
-        // Card authorized successfully — funds are held, not yet charged.
-        await redis.set(`order:${order.id}`, order);
-        await redis.lpush("orders:authorized", order.id);
-        await sendOrderConfirmation(order);
-      }
-    }
-
-    if (event.type === "payment_intent.canceled" || event.type === "payment_intent.payment_failed") {
-      const pi = event.data.object;
-      const existing = await redis.get(`order:${pi.id}`);
-      if (existing) {
-        await redis.set(`order:${pi.id}`, { ...existing, status: event.type === "payment_intent.canceled" ? "canceled" : "failed" });
-      }
-    }
-
-    if (event.type === "payment_intent.succeeded") {
-      // Fired once the order is actually captured (charged) later via /api/capture-order.
-      const pi = event.data.object;
-      const existing = await redis.get(`order:${pi.id}`);
-      if (existing) {
-        await redis.set(`order:${pi.id}`, { ...existing, status: "captured", capturedAt: new Date().toISOString() });
-      }
-    }
-
-    res.status(200).json({ received: true });
-  } catch (e) {
-    console.error("[stripe-webhook] handler error", e);
-    if (order) await redis?.del(`order-seen:${order.id}`).catch(() => {}); // let the retry redo it
-    res.status(500).json({ error: "order storage failed" }); // Stripe retries with backoff
-  }
+  res.status(200).json({ received: true });
 };

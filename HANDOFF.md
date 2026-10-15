@@ -4,11 +4,11 @@ Written for the store owner. About 45 minutes of clicking, plus waiting on DNS (
 `yourdomain.com` below means the domain bought at GoDaddy. Steps marked 🧑 need a human at a login screen — nothing can click them for you.
 
 ## 0. Accounts you need (all free to open)
-GoDaddy (domain) · Vercel (hosting) · Stripe (payments) · Resend (email) · Upstash (via Vercel Storage) · GitHub (the code + the `/admin` editor).
+GoDaddy (domain) · Vercel (hosting) · Stripe (payments) · Resend (email) · GitHub (the code + the `/admin` editor).
 
 ## 1. Take over the hosting 🧑
 1. Create a Vercel account → Settings → add the developer to your team (or have them transfer the project to you: Project → Settings → Transfer).
-2. Vercel → project → **Storage** → Upstash Redis → connect. This fills `UPSTASH_REDIS_REST_URL` / `_TOKEN` for you.
+2. Optional: Vercel → project → **Storage** → Upstash Redis (free plan) is only needed for the newsletter signup box. Orders and emails work without it.
 
 ## 2. Domain: GoDaddy → Vercel 🧑
 1. Vercel → project → **Settings → Domains → Add** `yourdomain.com` (and `www.yourdomain.com`; Vercel redirects one to the other).
