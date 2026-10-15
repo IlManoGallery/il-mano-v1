@@ -12,8 +12,8 @@ const OS_VISION = (OS_STORY.vision || "").split(/\s+/).filter(Boolean).map(w => 
 });
 const OS_VALUES = (OS_STORY.values || []).map(v => [v.numeral, v.label]);
 const OS_WORDS_PX = 520;          // scroll distance over which the words light up
-const OS_HANDS_OFFSET = 460;      // px each hand starts off to its side
-const OS_GAP = 8;                 // px between the fingertips when together
+const OS_HANDS_OFFSET = 460;      // px each hand starts off to its side (at full width)
+const OS_HANDS_LEAD = 0.85;       // hands start moving when the section is 85% down the viewport
 const osClamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const osEaseOut = (t) => 1 - Math.pow(1 - t, 3);
 
@@ -35,6 +35,7 @@ const OurStory = () => {
   const handsRef = React.useRef(null);
   const leftRef = React.useRef(null);
   const rightRef = React.useRef(null);
+  const rowRef = React.useRef(null);
   const glowRef = React.useRef(null);
   const lineRef = React.useRef(null);
 
@@ -56,8 +57,9 @@ const OurStory = () => {
       const h = handsRef.current;
       if (h && leftRef.current) {
         const r = h.getBoundingClientRect();
-        const p = osClamp(-r.top / Math.max(1, r.height - window.innerHeight));
-        const k = leftRef.current.offsetWidth / 560;              // scale offsets on narrow screens
+        const lead = window.innerHeight * OS_HANDS_LEAD;
+        const p = osClamp((lead - r.top) / Math.max(1, r.height - window.innerHeight + lead));
+        const k = rowRef.current.offsetWidth / 1120;              // scale offsets on narrow screens
         const off = OS_HANDS_OFFSET * k * (1 - osEaseOut(osClamp(p / 0.8)));
         leftRef.current.style.transform = `translate3d(${-off}px,0,0)`;
         rightRef.current.style.transform = `translate3d(${off}px,0,0)`;
@@ -121,7 +123,7 @@ const OurStory = () => {
       {/* Hands */}
       <section className="os-hands" ref={handsRef} data-screen-label="Hands">
         <div className="os-hands__stage">
-          <div className="os-hands__row">
+          <div className="os-hands__row" ref={rowRef}>
             <div className="os-hand os-hand--l" ref={leftRef} role="img" aria-label="Adam's hand, reaching" />
             <div className="os-hand os-hand--r" ref={rightRef} role="img" aria-label="The hand of God, reaching" />
             <div className="os-hands__glow" ref={glowRef} aria-hidden="true" />
@@ -160,12 +162,8 @@ const OurStory = () => {
       <section className="os-close" data-screen-label="Closing">
         <h2 className="os-close__title">Made by hand. <em>Made to endure.</em></h2>
         <div className="os-close__actions">
-          <a href="/#collection" className="os-pill os-pill--solid">Shop the collection</a>
+          <a href="/clothing" className="os-pill os-pill--solid">Shop the collection</a>
           <a href="/gallery" className="os-pill">Visit the gallery</a>
-        </div>
-        <div className="os-mono os-close__foot">
-          <span>IL MANO · Manufactured in Los Angeles</span>
-          <span>© {new Date().getFullYear()}</span>
         </div>
       </section>
     </main>

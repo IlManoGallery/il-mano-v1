@@ -382,20 +382,9 @@ html.intro:not(.intro-done) .news-slide { display: none; }
   position: relative;
   height: 100svh; min-height: 100svh;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto;
+  align-content: end;
   padding: calc(var(--nav-h) + 32px) var(--pad-x) 48px;
-}
-.hero__top {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
-.hero__top span {
-  display: inline-block;
-  animation: fadeUp10 0.8s var(--ease) var(--t-labels) backwards;
 }
 .hero__bottom {
   display: grid;
@@ -977,6 +966,10 @@ html.intro:not(.intro-hero) .hero { animation-play-state: paused; }
   font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
   margin-top: 10px; color: var(--tobacco);
 }
+
+.footer__socials { display: flex; gap: 18px; margin-top: 28px; }
+.footer__socials a { color: rgba(245,244,240,0.6); display: inline-flex; transition: color 0.2s, transform 0.2s; }
+.footer__socials a:hover { color: var(--bg); transform: translateY(-2px); }
 
 .footer__legal {
   display: flex; justify-content: space-between; align-items: center;
@@ -1953,19 +1946,23 @@ body[data-surface="dark"] .cta:hover { background: var(--tobacco); }
   padding-top: var(--nav-h);
 }
 .os-hands__row { position: relative; width: 100%; height: clamp(150px, 26vw, 300px); }
+/* One image, cut at the fingertips into two halves that slide together. The crop is
+   x 24–52%, y 35–55% of creation-of-adam.jpg; the seam sits at x 38%, so at offset 0
+   the halves are pixel-identical to the original (no gap, no inner fade). */
+.os-hands__row { width: min(1120px, 92vw); margin: 0 auto; height: auto; aspect-ratio: 672 / 216; }
 .os-hand {
-  position: absolute; top: 0; width: min(560px, 46vw); aspect-ratio: 560 / 300;
+  position: absolute; top: 0; width: 50%; height: 100%;
   background-image: url("assets/creation-of-adam.jpg");
-  background-size: 666.67% auto; background-repeat: no-repeat;
+  background-size: 714.3% auto; background-repeat: no-repeat;
   filter: sepia(0.85) contrast(1.05) brightness(0.92);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent), linear-gradient(var(--mdir, to right), transparent, #000 28%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent), linear-gradient(var(--mdir), transparent, #000 28%);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent), linear-gradient(var(--mdir, to right), transparent, #000 28%);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent), linear-gradient(var(--mdir), transparent, #000 28%);
   mask-composite: intersect;
   will-change: transform;
 }
-.os-hand--l { right: calc(50% + 4px); background-position: 27.06% 45.6%; --mdir: to right; }
-.os-hand--r { left: calc(50% + 4px); background-position: 43.2% 46.9%; --mdir: to left; }
+.os-hand--l { left: 0; background-position: 27.9% 43.9%; --mdir: to right; }
+.os-hand--r { right: 0; background-position: 44.2% 43.9%; --mdir: to left; }
 .os-hands__glow {
   position: absolute; left: 50%; top: 10%; height: 80%; width: 1px; margin-left: -0.5px;
   background: linear-gradient(to bottom, transparent, rgba(243,239,232,0.9), transparent);
@@ -2018,6 +2015,6 @@ body[data-surface="dark"] .cta:hover { background: var(--tobacco); }
 @media (max-width: 720px) {
   .os-mission__top, .os-inspo__top { grid-template-columns: 1fr; }
   .os-values { grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
-  .os-inspo__fig img { height: 380px; }
+  .os-inspo__fig img { height: 300px; object-position: 28% 50%; }
   .os-hands__stage { gap: 36px; }
 }

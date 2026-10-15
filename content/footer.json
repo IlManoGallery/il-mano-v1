@@ -1,0 +1,36 @@
+{
+  "tagline": "A dialogue between American iconography and modern tailoring.",
+  "newsletterPlaceholder": "Email — first access to drops",
+  "columns": [
+    {
+      "heading": "Brand",
+      "links": [
+        { "label": "Our Story", "href": "/our-story" },
+        { "label": "FAQ", "href": "/faq" },
+        { "label": "Code of Conduct", "href": "/code-of-conduct" }
+      ]
+    },
+    {
+      "heading": "Support",
+      "links": [
+        { "label": "Shipping", "href": "/shipping-returns" },
+        { "label": "Returns", "href": "/shipping-returns#returns" },
+        { "label": "Size Guide", "href": "/faq#sizing" },
+        { "label": "Track Order (FedEx)", "href": "https://www.fedex.com/fedextrack/" },
+        { "label": "Contact", "href": "mailto:connorvahedi18@gmail.com,oncaldarella@gmail.com" }
+      ]
+    }
+  ],
+  "regionHeading": "Region",
+  "region": "United States · USD",
+  "socials": [
+    { "kind": "instagram", "url": "https://www.instagram.com/ilmanogallery/" },
+    { "kind": "email", "url": "mailto:connorvahedi18@gmail.com,oncaldarella@gmail.com" }
+  ],
+  "legalText": "IL MANO · Manufactured in Los Angeles",
+  "legalLinks": [
+    { "label": "Terms", "href": "/terms" },
+    { "label": "Privacy", "href": "/privacy" },
+    { "label": "Code of Conduct", "href": "/code-of-conduct" }
+  ]
+}

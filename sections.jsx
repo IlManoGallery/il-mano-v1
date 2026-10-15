@@ -87,10 +87,6 @@ const Hero = () => {
       </div>
       <div className="hero__veil" />
       <div className="hero__inner">
-        <div className="hero__top">
-          <span>Summer · 2026 · Volume 01</span>
-          <span>Los Angeles · 34.05° N</span>
-        </div>
         <div className="hero__bottom">
           <h1 className="hero__title">
             <span className="line"><span>American</span></span>
@@ -98,7 +94,7 @@ const Hero = () => {
           </h1>
           <div className="hero__meta">
             <p>At Il Mano Gallery, we envision a world where art, fashion, and philanthropy come together to inspire connection, creativity, and meaningful change.</p>
-            <a href="#collection" className="hero__cta" data-magnet>
+            <a href="/clothing" className="hero__cta" data-magnet>
               Shop the Collection
               <span className="arrow"><Icon name="arrow-right" size={14}/></span>
             </a>
@@ -425,16 +421,26 @@ const NewsletterSlideIn = () => {
 };
 
 /* ─── Footer ───────────────────────────────────────────────── */
+// Text and links come from the CMS (content/footer.json → Decap "Footer").
+// Social "kind" must be one of the keys below; a url of "#" or empty hides nothing — set the real link in the CMS.
+const SOCIAL_ICONS = {
+  instagram: <><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></>,
+  tiktok: <path d="M14 4v10.2a3.7 3.7 0 1 1-3.7-3.7M14 4c.4 2.4 2.1 4 4.8 4.2"/>,
+  email: <><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></>,
+  x: <><path d="M4.5 4.5l15 15M19.5 4.5l-15 15"/></>,
+  youtube: <><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5l5 2.5-5 2.5z"/></>,
+};
 const Footer = () => {
   const news = useNewsletter("footer");
+  const F = (window.IL_MANO_CONTENT || {}).footer || {};
   return (
     <footer className="footer">
       <div className="footer__megabrand">IL MANO</div>
       <div className="footer__grid">
         <div className="footer__col">
-          <p className="footer__tagline"><em>A dialogue between American iconography and modern tailoring.</em></p>
+          <p className="footer__tagline"><em>{F.tagline}</em></p>
           <form className="newsletter" onSubmit={news.submit}>
-            <input type="email" placeholder="Email — first access to drops" aria-label="Email address"
+            <input type="email" placeholder={F.newsletterPlaceholder} aria-label="Email address"
                    value={news.email} onChange={(e)=>news.setEmail(e.target.value)}
                    disabled={news.status === "done"} required />
             <button type="submit" disabled={news.status === "sending"}>
@@ -442,37 +448,29 @@ const Footer = () => {
             </button>
           </form>
           {news.status === "error" && <p className="newsletter__msg">{news.error}</p>}
+          <div className="footer__socials">
+            {(F.socials || []).filter(s => SOCIAL_ICONS[s.kind]).map(s => (
+              <a key={s.kind} href={s.url || "#"} aria-label={s.kind} {...(/^https?:/.test(s.url) ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">{SOCIAL_ICONS[s.kind]}</svg>
+              </a>
+            ))}
+          </div>
         </div>
+        {(F.columns || []).map(c => (
+          <div className="footer__col" key={c.heading}>
+            <h5>— {c.heading}</h5>
+            <ul>{(c.links || []).map(l => <li key={l.label}><a href={l.href}>{l.label}</a></li>)}</ul>
+          </div>
+        ))}
         <div className="footer__col">
-          <h5>— Brand</h5>
-          <ul>
-            <li><a href="/our-story">Our Story</a></li>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/code-of-conduct">Code of Conduct</a></li>
-          </ul>
-        </div>
-        <div className="footer__col">
-          <h5>— Support</h5>
-          <ul>
-            <li><a href="/shipping-returns">Shipping</a></li>
-            <li><a href="/shipping-returns#returns">Returns</a></li>
-            <li><a href="/faq#sizing">Size Guide</a></li>
-            <li><a href="mailto:hello@ilmano.com">Contact</a></li>
-          </ul>
-        </div>
-        <div className="footer__col">
-          <h5>— Region</h5>
-          <ul>
-            <li><Icon name="globe" size={12}/> United States · USD</li>
-          </ul>
+          <h5>— {F.regionHeading}</h5>
+          <ul><li><Icon name="globe" size={12}/> {F.region}</li></ul>
         </div>
       </div>
       <div className="footer__legal">
-        <div>© {new Date().getFullYear()} IL MANO · Manufactured in Los Angeles</div>
+        <div>© {new Date().getFullYear()} {F.legalText}</div>
         <div className="footer__legal-group">
-          <a href="/terms">Terms</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/code-of-conduct">Code of Conduct</a>
+          {(F.legalLinks || []).map(l => <a key={l.label} href={l.href}>{l.label}</a>)}
         </div>
       </div>
     </footer>

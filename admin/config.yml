@@ -159,6 +159,47 @@ collections:
               - { label: Numeral, name: numeral, widget: string }
               - { label: Label, name: label, widget: string }
 
+  # ───────────────────── Footer ─────────────────────
+  - name: footer
+    label: Footer
+    files:
+      - name: footer
+        label: "Footer (every page)"
+        file: content/footer.json
+        fields:
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: "Newsletter placeholder", name: newsletterPlaceholder, widget: string }
+          - label: "Link columns"
+            name: columns
+            widget: list
+            summary: "{{fields.heading}}"
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - label: Links
+                name: links
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: "Link", name: href, widget: string, hint: "/faq, https://…, or mailto:you@email.com" }
+          - { label: "Region heading", name: regionHeading, widget: string }
+          - { label: Region, name: region, widget: string }
+          - label: "Social links"
+            name: socials
+            widget: list
+            summary: "{{fields.kind}}"
+            fields:
+              - { label: Network, name: kind, widget: select, options: [instagram, email, tiktok, x, youtube] }
+              - { label: "Profile URL", name: url, widget: string, hint: "Full link (https://instagram.com/…) or, for email, mailto:name@example.com (commas separate several)" }
+          - { label: "Legal line", name: legalText, widget: string, hint: "Shown after © and the year" }
+          - label: "Legal links"
+            name: legalLinks
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: "Link", name: href, widget: string }
+
   # ───────────────────── Info pages ─────────────────────
   - name: pages
     label: Info Pages

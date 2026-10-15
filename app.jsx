@@ -86,9 +86,27 @@ const App = () => {
   const removeItem = (lineId) => setItems(prev => prev.filter(it => it.lineId !== lineId));
 
   // ── PDP open helper (also opens cart on quick-add) ─────
+  // Each open pushes a history entry (#slug) so the browser Back button closes the
+  // product view instead of leaving the page; reloading/sharing #slug reopens it.
+  const pushedRef = React.useRef(false);
   const openPdp = (product, colorId) => {
     setPdp({ product, colorId: colorId || product.defaultColor });
+    if (!pushedRef.current) { history.pushState({ pv: 1 }, "", "#" + product.slug); pushedRef.current = true; }
   };
+  const closePdp = () => {
+    if (pushedRef.current) history.back(); // popstate below does the closing
+    else { setPdp(null); history.replaceState(null, "", location.pathname + location.search); }
+  };
+  React.useEffect(() => {
+    const fromHash = () => {
+      const p = data.products.find(x => x.slug === location.hash.slice(1));
+      setPdp(p ? { product: p, colorId: p.defaultColor } : null);
+      pushedRef.current = false;
+    };
+    fromHash();
+    window.addEventListener("popstate", fromHash);
+    return () => window.removeEventListener("popstate", fromHash);
+  }, []);
 
   // ── Quick-add with fly-to-cart animation ────────────────
   const quickAdd = (product, colorId, originEl) => {
@@ -131,7 +149,7 @@ const App = () => {
     addItem(product, colorId, sizeId);
     // Brief delay so the user sees the "Added" state, then open cart
     setTimeout(() => {
-      setPdp(null);
+      closePdp();
       setCartOpen(true);
     }, 700);
   };
@@ -212,7 +230,7 @@ const App = () => {
         <Footer />
       </main>
 
-      <PDP state={pdp} onClose={() => setPdp(null)} onAdd={pdpAdd} products={data.products} />
+      <PDP state={pdp} onClose={closePdp} onAdd={pdpAdd} products={data.products} />
 
       <CartDrawer
         open={cartOpen}

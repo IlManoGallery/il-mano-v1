@@ -126,6 +126,81 @@
    }
   ]
  },
+ "footer": {
+  "tagline": "A dialogue between American iconography and modern tailoring.",
+  "newsletterPlaceholder": "Email — first access to drops",
+  "columns": [
+   {
+    "heading": "Brand",
+    "links": [
+     {
+      "label": "Our Story",
+      "href": "/our-story"
+     },
+     {
+      "label": "FAQ",
+      "href": "/faq"
+     },
+     {
+      "label": "Code of Conduct",
+      "href": "/code-of-conduct"
+     }
+    ]
+   },
+   {
+    "heading": "Support",
+    "links": [
+     {
+      "label": "Shipping",
+      "href": "/shipping-returns"
+     },
+     {
+      "label": "Returns",
+      "href": "/shipping-returns#returns"
+     },
+     {
+      "label": "Size Guide",
+      "href": "/faq#sizing"
+     },
+     {
+      "label": "Track Order (FedEx)",
+      "href": "https://www.fedex.com/fedextrack/"
+     },
+     {
+      "label": "Contact",
+      "href": "mailto:connorvahedi18@gmail.com,oncaldarella@gmail.com"
+     }
+    ]
+   }
+  ],
+  "regionHeading": "Region",
+  "region": "United States · USD",
+  "socials": [
+   {
+    "kind": "instagram",
+    "url": "https://www.instagram.com/ilmanogallery/"
+   },
+   {
+    "kind": "email",
+    "url": "mailto:connorvahedi18@gmail.com,oncaldarella@gmail.com"
+   }
+  ],
+  "legalText": "IL MANO · Manufactured in Los Angeles",
+  "legalLinks": [
+   {
+    "label": "Terms",
+    "href": "/terms"
+   },
+   {
+    "label": "Privacy",
+    "href": "/privacy"
+   },
+   {
+    "label": "Code of Conduct",
+    "href": "/code-of-conduct"
+   }
+  ]
+ },
  "products": [
   {
    "categoryKey": "bags",
@@ -370,14 +445,14 @@
     },
     {
      "heading": "Reporting a concern",
-     "body": "If you experience or witness a violation of this code, please email hello@ilmano.com and we will review it promptly."
+     "body": "If you experience or witness a violation of this code, please email connorvahedi18@gmail.com and we will review it promptly."
     }
    ]
   },
   "faq": {
    "eyebrow": "Support",
    "title": "Frequently <em>asked.</em>",
-   "intro": "Everything you need to know before your order arrives. Can't find it here — email us at hello@ilmano.com.",
+   "intro": "Everything you need to know before your order arrives. Can't find it here — email us at connorvahedi18@gmail.com.",
    "sections": [
     {
      "heading": "Orders & Payment",
@@ -392,7 +467,7 @@
       },
       {
        "q": "Can I change or cancel my order?",
-       "a": "Email hello@ilmano.com as soon as possible. If your order hasn't been captured/shipped yet, we can usually cancel or adjust it."
+       "a": "Email connorvahedi18@gmail.com as soon as possible. If your order hasn't been captured/shipped yet, we can usually cancel or adjust it."
       }
      ]
     },
@@ -437,7 +512,7 @@
     {
      "heading": "Newsletter",
      "id": "newsletter",
-     "body": "If you subscribe to our newsletter (in the site footer or the sign-up prompt), we collect your email address and record when and where you signed up. We use it only to send you news about drops, restocks and IL MANO releases. Subscribing is optional and separate from placing an order. You can unsubscribe at any time via the link in any email or by contacting hello@ilmano.com, and we'll remove your address on request."
+     "body": "If you subscribe to our newsletter (in the site footer or the sign-up prompt), we collect your email address and record when and where you signed up. We use it only to send you news about drops, restocks and IL MANO releases. Subscribing is optional and separate from placing an order. You can unsubscribe at any time via the link in any email or by contacting connorvahedi18@gmail.com, and we'll remove your address on request."
     },
     {
      "heading": "Third parties",
@@ -450,11 +525,11 @@
     },
     {
      "heading": "Your choices",
-     "body": "You can unsubscribe from marketing emails at any time via the link in any email, or by contacting hello@ilmano.com. To request deletion of your data, email us and we'll respond within a reasonable timeframe."
+     "body": "You can unsubscribe from marketing emails at any time via the link in any email, or by contacting connorvahedi18@gmail.com. To request deletion of your data, email us and we'll respond within a reasonable timeframe."
     },
     {
      "heading": "Contact",
-     "body": "Questions about this policy? Email hello@ilmano.com."
+     "body": "Questions about this policy? Email connorvahedi18@gmail.com."
     }
    ]
   },
@@ -494,7 +569,7 @@
       },
       {
        "q": "How to start a return",
-       "a": "Email hello@ilmano.com with your order number and we'll send a prepaid return label."
+       "a": "Email connorvahedi18@gmail.com with your order number and we'll send a prepaid return label."
       }
      ]
     }
@@ -531,7 +606,7 @@
     },
     {
      "heading": "7. Contact",
-     "body": "Questions about these terms? Email hello@ilmano.com."
+     "body": "Questions about these terms? Email connorvahedi18@gmail.com."
     }
    ]
   }

@@ -25,6 +25,7 @@ const out = {
   home: read("home.json"),
   gallery: read("gallery.json"),
   story: read("story.json"),
+  footer: read("footer.json"),
   products: readDir("products").map(x => x.data),
   pages: Object.fromEntries(readDir("pages").map(x => [x.file, x.data])),
 };

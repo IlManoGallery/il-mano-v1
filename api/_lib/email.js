@@ -5,6 +5,8 @@ const INK = "#0a0a0a";
 const MID = "#8c8780";
 const BG = "#f5f4f0";
 const LINE = "#ddd8cc";
+// Contact address shown in the order email. Set CONTACT_EMAIL in Vercel to change it.
+const CONTACT = process.env.CONTACT_EMAIL || "connorvahedi18@gmail.com";
 const TOBACCO = "#6b4a2b";
 
 // Customer-typed text goes into HTML — escape it.
@@ -171,7 +173,7 @@ function orderConfirmationHtml(order) {
             <td style="padding:36px 24px 8px;text-align:center;">
               <div style="font-family:Georgia,'Times New Roman',serif;font-size:15px;color:${INK};">Questions about your order?</div>
               <div style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:${MID};line-height:1.7;padding-top:6px;">
-                Simply reply to this email, or write <a href="mailto:hello@ilmano.com" style="color:${INK};">hello@ilmano.com</a>.
+                Simply reply to this email, or write <a href="mailto:${esc(CONTACT)}" style="color:${INK};">${esc(CONTACT)}</a>.
               </div>
             </td>
           </tr>
