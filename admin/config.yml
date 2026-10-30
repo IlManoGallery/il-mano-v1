@@ -2,7 +2,7 @@
 # Every save is a git commit to `main`; Vercel then redeploys the site (~1 minute).
 backend:
   name: github
-  repo: ShayJah/il-mano-v1
+  repo: IlManoGallery/il-mano-v1
   branch: main
   # Where the login popup lives (api/auth.js + api/callback.js). If the site moves
   # to a custom domain, change base_url to it — and update the GitHub OAuth app's callback URL.
