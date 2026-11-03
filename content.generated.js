@@ -34,7 +34,7 @@
     "num": "01",
     "name": "Hoodies",
     "key": "hoodies",
-    "img": "assets/hoodie-black-back.webp",
+    "img": "/assets/hoodie-black-back.webp",
     "size": "lg",
     "count": "1 piece"
    },
@@ -42,7 +42,7 @@
     "num": "02",
     "name": "T-Shirts",
     "key": "t-shirts",
-    "img": "assets/hoodie-white-front.webp",
+    "img": "/assets/hoodie-white-front.webp",
     "size": "md",
     "count": "Coming soon"
    },
@@ -50,7 +50,7 @@
     "num": "03",
     "name": "Hats",
     "key": "hats",
-    "img": "assets/cap-brown.webp",
+    "img": "/assets/cap-brown.webp",
     "size": "sm",
     "count": "1 piece"
    },
@@ -58,7 +58,7 @@
     "num": "04",
     "name": "Bags",
     "key": "bags",
-    "img": "assets/bag-duffle.png",
+    "img": "/assets/bag-duffle.png",
     "size": "sm",
     "count": "1 piece"
    },
@@ -66,7 +66,7 @@
     "num": "05",
     "name": "Gallery",
     "key": "gallery",
-    "img": "assets/brand-tags.webp",
+    "img": "/assets/brand-tags.webp",
     "size": "sm",
     "count": "Bespoke"
    }
@@ -78,32 +78,68 @@
     "badge": "Bundle",
     "overrideName": "The Field Set",
     "overridePrice": 340,
-    "overrideImg": "assets/lifestyle-bag-hoodie.png",
+    "overrideImg": "/assets/lifestyle-bag-hoodie.png",
     "overrideSub": "Hoodie + Duffle"
    }
-  ]
+  ],
+  "hero": {
+   "image": "/assets/0619-0957_losangeles.jpg",
+   "imageAlt": "Summer 2026 — California iconography",
+   "titleLine1": "American",
+   "titleLine2": "Iconography.",
+   "body": "At Il Mano Gallery, we envision a world where art, fashion, and philanthropy come together to inspire connection, creativity, and meaningful change.",
+   "buttonLabel": "Shop the Collection",
+   "buttonUrl": "/clothing"
+  },
+  "categoriesHeading": {
+   "eyebrow": "Index 01 · Categories",
+   "title": "The *archetypes* of summer."
+  },
+  "collectionHeading": {
+   "eyebrow": "Index 02 · Summer 26 Drop",
+   "title": "The *collection.*"
+  },
+  "editorial": {
+   "image": "/assets/lifestyle-bag-hoodie.png",
+   "imageAlt": "The Field Set — hoodie & duffle on location",
+   "eyebrow": "Index 03 · Editorial",
+   "quote": "Dust on the leather. Sun on the cotton. A wardrobe that ages with the road.",
+   "body": "Shot on a single morning between Joshua Tree and Pioneertown — no stylist, no retouch. The Heritage Duffle and Tobacco Hoodie photographed where they belong: outside.",
+   "countLabel": "pieces in drop",
+   "statValue": "100",
+   "statSuffix": "%",
+   "statLabel": "Made in LA"
+  },
+  "manifesto": {
+   "eyebrow": "— Manifesto · Connect · Create · Inspire",
+   "statement": "We carve garments like leather — tested by use, refined by wear, and made to outlast the trend cycle."
+  },
+  "clothingTitle": "CLOTHING"
  },
  "gallery": {
   "pieces": [
    {
     "id": "black",
-    "src": "assets/gallery/hoodie-black-front.webp",
+    "src": "/assets/gallery/hoodie-black-front.webp",
     "title": "Vanta Black",
     "meta": "Classic Hoodie · French terry · Los Angeles"
    },
    {
     "id": "brown",
-    "src": "assets/gallery/hoodie-brown-front.webp",
+    "src": "/assets/gallery/hoodie-brown-front.webp",
     "title": "Cabalo Brown",
     "meta": "Classic Hoodie · LA-dyed patina · Unisex"
    },
    {
     "id": "blue",
-    "src": "assets/gallery/hoodie-blue-front.webp",
+    "src": "/assets/gallery/hoodie-blue-front.webp",
     "title": "Electric Blue",
     "meta": "Classic Hoodie · 420 GSM · Relaxed fit"
    }
-  ]
+  ],
+  "eyebrow": "Il Mano Gallery · Exhibitions",
+  "title": "Artist *collaborations.*",
+  "viewLabel": "View the piece"
  },
  "story": {
   "vision": "We envision a world where *art,* *fashion,* and *philanthropy* come together to inspire connection, creativity, and meaningful change.",
@@ -124,7 +160,28 @@
     "numeral": "IV",
     "label": "Deeply human"
    }
-  ]
+  ],
+  "missionTitle": "Art has the power *to unite.*",
+  "inspirationTitle": "The power held *within our hands.*",
+  "closingTitle": "Made by hand. *Made to endure.*",
+  "missionParagraphs": [
+   "Il Mano means *the hand* — where every piece begins and where it ends. Each garment is cut, dyed and finished by hand in Los Angeles, made to be worn, kept and passed on.",
+   "Art gives us the language, fashion gives it form, and philanthropy gives it a purpose beyond the garment: to bring people closer to each other, and to the work of making something that lasts."
+  ],
+  "inspirationParagraphs": [
+   "Five centuries ago, Michelangelo painted the smallest gap in art history — a few inches of air between two fingers, charged with everything that follows. It is the image behind our name: creation as a gesture passed from one hand to another.",
+   "We keep that gap open on purpose. It is where the work, and the people who make it and wear it, meet."
+  ],
+  "visionLabel": "At IL MANO Gallery,",
+  "handsLine1": "To make the world a better place,",
+  "handsLine2": "one hand at a time.",
+  "inspirationImage": "/assets/creation-of-adam.jpg",
+  "inspirationImageAlt": "The Creation of Adam, Michelangelo — Sistine Chapel ceiling",
+  "inspirationCaption": "Michelangelo Buonarroti · The Creation of Adam · Sistine Chapel ceiling · c. 1508–1512",
+  "shopLabel": "Shop the collection",
+  "shopUrl": "/clothing",
+  "galleryLabel": "Visit the gallery",
+  "galleryUrl": "/gallery"
  },
  "footer": {
   "tagline": "A dialogue between American iconography and modern tailoring.",
@@ -206,7 +263,7 @@
    "categoryKey": "bags",
    "defaultColor": "saddle",
    "badge": "Limited",
-   "price": 300,
+   "price": 700,
    "name": "Legacy Duffle",
    "slug": "heritage-duffle",
    "order": 3,
@@ -257,7 +314,7 @@
    "categoryKey": "hats",
    "defaultColor": "black",
    "badge": "",
-   "price": 65,
+   "price": 129,
    "name": "Rodeo Cap",
    "slug": "trail-cap",
    "order": 2,
@@ -326,7 +383,7 @@
    "categoryKey": "hoodies",
    "defaultColor": "black",
    "badge": "New",
-   "price": 150,
+   "price": 375,
    "name": "Retro Hoodie",
    "slug": "classic-hoodie",
    "order": 1,
@@ -613,43 +670,44 @@
  },
  "exhibitions": [
   {
-   "id": "crush-cancer",
-   "order": 1,
-   "layout": "catalogue",
    "artist": "Nelson De La Nuez",
-   "title": "Crush *Cancer.*",
-   "subtitle": "Wearable art by the King of Pop Art, made with Il Mano Gallery for the PHASE ONE Gala 2026.",
-   "status": "Live auction",
-   "cover": "assets/exhibitions/crush-cancer/back.webp",
    "concept": "Nelson De La Nuez, the King of Pop Art, joined Il Mano Gallery to make a one-of-a-kind wearable piece for PHASE ONE: his iconic French Bulldog, carrying a message we can all stand behind.",
-   "process": "The handprint on the front is the artist's own, applied by hand. Tap the sleeve and an embedded NFC tag opens the film of him placing it.",
-   "quote": "His iconic French Bulldog on the back. His actual handprint on the front, placed by his own hand.",
+   "layout": "vault",
+   "artistFilm": {
+    "src": "/assets/exhibitions/crush-cancer/artist.mp4",
+    "heading": "One hand, *one piece.*",
+    "text": "De La Nuez on the piece, then the moment he presses his hand into the cotton. Tap the sleeve of the finished piece and its NFC tag brings you back to this."
+   },
    "views": [
     {
      "label": "Back",
-     "src": "assets/exhibitions/crush-cancer/back.webp",
+     "src": "/assets/exhibitions/crush-cancer/back.webp",
      "alt": "Back of the white hoodie: Nelson De La Nuez's blue French Bulldog under red and black CRUSH CANCER lettering, with his signature patch"
     },
     {
      "label": "Handprint",
-     "src": "assets/exhibitions/crush-cancer/front.webp",
+     "src": "/assets/exhibitions/crush-cancer/front.webp",
      "alt": "Front of the hoodie: embroidered IL MANO wordmark and the artist's grey handprint across the chest"
     },
     {
      "label": "NFC sleeve",
-     "src": "assets/exhibitions/crush-cancer/sleeve.webp",
+     "src": "/assets/exhibitions/crush-cancer/sleeve.webp",
      "alt": "Sleeve detail: vertical IL MANO tab with the metal hand button, and the MANO hem label"
     }
    ],
-   "artistFilm": {
-    "src": "assets/exhibitions/crush-cancer/artist.mp4",
-    "heading": "One hand, *one piece.*",
-    "text": "De La Nuez on the piece, then the moment he presses his hand into the cotton. Tap the sleeve of the finished piece and its NFC tag brings you back to this."
+   "order": 1,
+   "process": "The handprint on the front is the artist's own, applied by hand. Tap the sleeve and an embedded NFC tag opens the film of him placing it.",
+   "cta": {
+    "label": "Bid at PHASE ONE",
+    "url": "https://pro.gofundme.com/live/auction/phase-one-gala-2026/eb9cc7d5-b671-4c61-a6c8-194a1f7a5280/item/4981b9e2-ee07-4fc1-b59a-8b6ab1713a27"
    },
-   "productionFilm": {
-    "src": "assets/exhibitions/crush-cancer/production.mp4",
-    "caption": "Pulled by hand, layer by layer."
+   "note": "Bidding closes Sat 17 Oct 2026 · 5:00 PM PDT",
+   "status": "Live auction",
+   "secondary": {
+    "label": "About the artist",
+    "url": "https://kingofpopart.com"
    },
+   "cover": "/assets/exhibitions/crush-cancer/back.webp",
    "specs": [
     {
      "title": "Edition",
@@ -668,6 +726,14 @@
      "body": "PHASE ONE Gala 2026, a 501(c)(3). Offered in the live auction, donated by Nelson De La Nuez and Il Mano Gallery."
     }
    ],
+   "subtitle": "Wearable art by the King of Pop Art, made with Il Mano Gallery for the PHASE ONE Gala 2026.",
+   "title": "Crush *Cancer.*",
+   "id": "crush-cancer",
+   "quote": "His iconic French Bulldog on the back. His actual handprint on the front, placed by his own hand.",
+   "productionFilm": {
+    "src": "/assets/exhibitions/crush-cancer/production.mp4",
+    "caption": "Pulled by hand, layer by layer."
+   },
    "stats": [
     {
      "label": "Made",
@@ -685,16 +751,7 @@
      "label": "Starting bid",
      "value": "$1,200"
     }
-   ],
-   "note": "Bidding closes Sat 17 Oct 2026 · 5:00 PM PDT",
-   "cta": {
-    "label": "Bid at PHASE ONE",
-    "url": "https://pro.gofundme.com/live/auction/phase-one-gala-2026/eb9cc7d5-b671-4c61-a6c8-194a1f7a5280/item/4981b9e2-ee07-4fc1-b59a-8b6ab1713a27"
-   },
-   "secondary": {
-    "label": "About the artist",
-    "url": "https://kingofpopart.com"
-   }
+   ]
   }
  ]
 };
