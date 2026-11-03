@@ -10,7 +10,7 @@ backend:
   auth_endpoint: api/auth
 
 media_folder: assets          # uploaded photos land in /assets ...
-public_folder: assets         # ... and are referenced as "assets/photo.webp", like the rest of the site
+public_folder: /assets         # ... and are referenced as "assets/photo.webp", like the rest of the site
 locale: en
 
 collections:
@@ -81,7 +81,7 @@ collections:
   # ───────────────────── Gallery exhibitions ─────────────────────
   # One file per artist piece. Listed on /gallery, each opens at /piece?id=<id>.
   - name: exhibitions
-    label: "Gallery exhibitions"
+    label: "Collaborations / gallery pieces"
     label_singular: Exhibition
     folder: content/exhibitions
     extension: json
@@ -92,7 +92,7 @@ collections:
     summary: "{{order}}. {{artist}} — {{title}}"
     sortable_fields: [order, artist]
     media_folder: /assets/exhibitions
-    public_folder: assets/exhibitions
+    public_folder: /assets/exhibitions
     fields:
       - { label: "ID", name: id, widget: string, pattern: ["^[a-z0-9-]+$", "Lowercase letters, numbers and dashes only"], hint: "Used in the web address: /piece?id=crush-cancer" }
       - { label: "Display order", name: order, widget: number, value_type: int, min: 1, hint: "1 is the featured piece at the top of the gallery" }
@@ -174,6 +174,95 @@ collections:
         label: "Home page"
         file: content/home.json
         fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+            - label: Image
+              name: image
+              widget: image
+            - label: Image alt
+              name: imageAlt
+              widget: string
+            - label: Title line1
+              name: titleLine1
+              widget: string
+            - label: Title line2
+              name: titleLine2
+              widget: string
+            - label: Body
+              name: body
+              widget: text
+            - label: Button label
+              name: buttonLabel
+              widget: string
+            - label: Button url
+              name: buttonUrl
+              widget: string
+          - label: Categories heading
+            name: categoriesHeading
+            widget: object
+            fields:
+            - label: Eyebrow
+              name: eyebrow
+              widget: string
+            - label: Title
+              name: title
+              widget: string
+          - label: Collection heading
+            name: collectionHeading
+            widget: object
+            fields:
+            - label: Eyebrow
+              name: eyebrow
+              widget: string
+            - label: Title
+              name: title
+              widget: string
+          - label: Editorial
+            name: editorial
+            widget: object
+            fields:
+            - label: Image
+              name: image
+              widget: image
+            - label: Image alt
+              name: imageAlt
+              widget: string
+            - label: Eyebrow
+              name: eyebrow
+              widget: string
+            - label: Quote
+              name: quote
+              widget: text
+            - label: Body
+              name: body
+              widget: text
+            - label: Count label
+              name: countLabel
+              widget: string
+            - label: Stat value
+              name: statValue
+              widget: string
+            - label: Stat suffix
+              name: statSuffix
+              widget: string
+            - label: Stat label
+              name: statLabel
+              widget: string
+          - label: Manifesto
+            name: manifesto
+            widget: object
+            fields:
+            - label: Eyebrow
+              name: eyebrow
+              widget: string
+            - label: Statement
+              name: statement
+              widget: text
+          - label: Clothing title
+            name: clothingTitle
+            widget: string
           - { label: "Scrolling banner words", name: marqueeItems, widget: list, field: { label: Text, name: text, widget: string } }
           - label: "Connect / Create / Inspire"
             name: storyPillars
@@ -213,14 +302,23 @@ collections:
     label: Gallery & Our Story
     files:
       - name: gallery
-        label: "Gallery page"
+        label: "Gallery / collaborations landing"
         file: content/gallery.json
         fields:
-          - label: Pieces
+          - label: Eyebrow
+            name: eyebrow
+            widget: string
+          - label: Title
+            name: title
+            widget: string
+          - label: View label
+            name: viewLabel
+            widget: string
+          - label: "Legacy floating gallery images (not the collaborations page)"
             name: pieces
             widget: list
             summary: "{{fields.title}}"
-            hint: "The three floating pieces, in order. Use transparent PNG/WebP cut-outs. (Movement is fixed — only photo and text change.)"
+            hint: "Legacy animation only, currently not mounted on /gallery. The three floating pieces, in order. Use transparent PNG/WebP cut-outs. (Movement is fixed — only photo and text change.)"
             fields:
               - { label: "ID (don't change)", name: id, widget: string, hint: "black, brown or blue — ties the text to its animation" }
               - { label: Photo, name: src, widget: image }
@@ -230,6 +328,61 @@ collections:
         label: "Our Story page"
         file: content/story.json
         fields:
+          - label: Mission title
+            name: missionTitle
+            widget: string
+          - label: Inspiration title
+            name: inspirationTitle
+            widget: string
+          - label: Closing title
+            name: closingTitle
+            widget: string
+          - label: Mission paragraphs
+            name: missionParagraphs
+            widget: list
+            field:
+              label: Paragraph
+              name: text
+              widget: text
+            hint: Use *asterisks* for italic text.
+          - label: Inspiration paragraphs
+            name: inspirationParagraphs
+            widget: list
+            field:
+              label: Paragraph
+              name: text
+              widget: text
+            hint: Use *asterisks* for italic text.
+          - label: Vision label
+            name: visionLabel
+            widget: string
+          - label: Hands line1
+            name: handsLine1
+            widget: string
+          - label: Hands line2
+            name: handsLine2
+            widget: string
+          - label: Inspiration image
+            name: inspirationImage
+            widget: image
+          - label: Inspiration image alt
+            name: inspirationImageAlt
+            widget: string
+          - label: Inspiration caption
+            name: inspirationCaption
+            widget: string
+          - label: Shop label
+            name: shopLabel
+            widget: string
+          - label: Shop url
+            name: shopUrl
+            widget: string
+          - label: Gallery label
+            name: galleryLabel
+            widget: string
+          - label: Gallery url
+            name: galleryUrl
+            widget: string
           - { label: "Vision sentence", name: vision, widget: text, hint: "Put *asterisks* around words that should be highlighted, e.g. *art,*" }
           - label: Values
             name: values
