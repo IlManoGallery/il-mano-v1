@@ -265,7 +265,7 @@ const ClothingPage = () => {
       </div>
 
       <header className="c-head">
-        <h1>CLOTHING</h1>
+        <h1>{(window.IL_MANO_CONTENT || {}).home.clothingTitle}</h1>
         <div className="c-chips" role="tablist">
           {cats.map(c => (
             <button key={c.key} role="tab" aria-selected={cat === c.key}
