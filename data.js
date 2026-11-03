@@ -69,13 +69,13 @@
   // Needs the resized copies made by `npm run images`; without them it falls back to the original.
   const IMAGES = (typeof window !== "undefined" ? window.IL_MANO_IMAGES : null) || {};
   const variant = (path, w) => {
-    const m = IMAGES[path];
+    const m = IMAGES[String(path).replace(/^\//, "")];
     if (!m) return path;
     const pick = m.widths.find(x => x >= w) || m.widths[m.widths.length - 1];
     return `assets/opt/${m.stem}-${pick}.webp`;
   };
   const imgAttrs = (path, sizes) => {
-    const m = IMAGES[path];
+    const m = IMAGES[String(path).replace(/^\//, "")];
     if (!m) return { src: path };
     return {
       src: variant(path, 900),
