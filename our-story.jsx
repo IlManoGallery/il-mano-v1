@@ -86,7 +86,7 @@ const OurStory = () => {
       {/* Vision */}
       <section className="os-vision" ref={visionRef} data-screen-label="Vision">
         <div className="os-vision__panel">
-          <div className="os-mono os-vision__label">At IL MANO Gallery,</div>
+          <div className="os-mono os-vision__label">{OS_STORY.visionLabel}</div>
           <p className="os-vision__text">
             {OS_VISION.map(([w, em], i) => (
               <React.Fragment key={i}>
@@ -100,18 +100,8 @@ const OurStory = () => {
       {/* Mission */}
       <section className="os-mission" data-screen-label="Mission">
         <div className="os-mission__top">
-          <h2 className="os-mission__title">Art has the power <em>to unite.</em></h2>
-          <div className="os-mission__copy">
-            <p>
-              Il Mano means <em>the hand</em> — where every piece begins and where it ends. Each
-              garment is cut, dyed and finished by hand in Los Angeles, made to be worn, kept and passed on.
-            </p>
-            <p>
-              Art gives us the language, fashion gives it form, and philanthropy gives it a purpose
-              beyond the garment: to bring people closer to each other, and to the work of making
-              something that lasts.
-            </p>
-          </div>
+          <h2 className="os-mission__title">{cmsEm(OS_STORY.missionTitle)}</h2>
+          <div className="os-mission__copy">{OS_STORY.missionParagraphs.map((p,i) => <p key={i}>{cmsEm(p)}</p>)}</div>
         </div>
         <ul className="os-values">
           {OS_VALUES.map(([n, label]) => (
@@ -129,7 +119,7 @@ const OurStory = () => {
             <div className="os-hands__glow" ref={glowRef} aria-hidden="true" />
           </div>
           <p className="os-hands__line" ref={lineRef}>
-            To make the world a better place,<br /><em>one hand at a time.</em>
+            {OS_STORY.handsLine1}<br /><em>{OS_STORY.handsLine2}</em>
           </p>
         </div>
       </section>
@@ -137,33 +127,23 @@ const OurStory = () => {
       {/* Inspiration */}
       <section className="os-inspo" data-screen-label="Inspiration">
         <div className="os-inspo__top">
-          <h2 className="os-inspo__title">The power held <em>within our hands.</em></h2>
-          <div className="os-inspo__copy">
-            <p>
-              Five centuries ago, Michelangelo painted the smallest gap in art history — a few
-              inches of air between two fingers, charged with everything that follows. It is the
-              image behind our name: creation as a gesture passed from one hand to another.
-            </p>
-            <p>
-              We keep that gap open on purpose. It is where the work, and the people who make it
-              and wear it, meet.
-            </p>
-          </div>
+          <h2 className="os-inspo__title">{cmsEm(OS_STORY.inspirationTitle)}</h2>
+          <div className="os-inspo__copy">{OS_STORY.inspirationParagraphs.map((p,i) => <p key={i}>{cmsEm(p)}</p>)}</div>
         </div>
         <figure className="os-inspo__fig">
-          <img src="assets/creation-of-adam.jpg" alt="The Creation of Adam, Michelangelo — Sistine Chapel ceiling" loading="lazy" />
+          <img src={OS_STORY.inspirationImage} alt={OS_STORY.inspirationImageAlt} loading="lazy" />
           <figcaption className="os-mono">
-            Michelangelo Buonarroti · The Creation of Adam · Sistine Chapel ceiling · c. 1508–1512
+            {OS_STORY.inspirationCaption}
           </figcaption>
         </figure>
       </section>
 
       {/* Closing */}
       <section className="os-close" data-screen-label="Closing">
-        <h2 className="os-close__title">Made by hand. <em>Made to endure.</em></h2>
+        <h2 className="os-close__title">{cmsEm(OS_STORY.closingTitle)}</h2>
         <div className="os-close__actions">
-          <a href="/clothing" className="os-pill os-pill--solid">Shop the collection</a>
-          <a href="/gallery" className="os-pill">Visit the gallery</a>
+          <a href={OS_STORY.shopUrl} className="os-pill os-pill--solid">{OS_STORY.shopLabel}</a>
+          <a href={OS_STORY.galleryUrl} className="os-pill">{OS_STORY.galleryLabel}</a>
         </div>
       </section>
     </main>
