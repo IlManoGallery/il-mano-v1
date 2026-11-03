@@ -1,3 +1,5 @@
+const HOME_COPY = (window.IL_MANO_CONTENT || {}).home || {};
+const cmsEm = (s = "") => String(s).split(/(\*[^*]+\*)/).map((t, i) => /^\*.*\*$/.test(t) ? <em key={i}>{t.slice(1,-1)}</em> : t);
 /* ─── Cookie notice ────────────────────────────────────────── */
 /* Informational only: the site sets no analytics/advertising cookies. If any are
    ever added (GA, Meta Pixel, etc.) this must become a real opt-in consent banner. */
@@ -80,22 +82,23 @@ const Nav = ({ cartCount, onOpenCart, transparent, hideUntilScroll }) => {
 
 /* ─── Hero ─────────────────────────────────────────────────── */
 const Hero = () => {
+  const H = HOME_COPY.hero;
   return (
     <section className="hero" data-screen-label="Hero">
       <div className="hero__media">
-        <img {...window.IL_MANO_DATA.imgAttrs("assets/0619-0957_losangeles.jpg", "100vw")} alt="Summer 2026 — California iconography" fetchpriority="high" />
+        <img {...window.IL_MANO_DATA.imgAttrs(H.image, "100vw")} alt={H.imageAlt} fetchpriority="high" />
       </div>
       <div className="hero__veil" />
       <div className="hero__inner">
         <div className="hero__bottom">
           <h1 className="hero__title">
-            <span className="line"><span>American</span></span>
-            <span className="line"><span><em>Iconography.</em></span></span>
+            <span className="line"><span>{H.titleLine1}</span></span>
+            <span className="line"><span><em>{H.titleLine2}</em></span></span>
           </h1>
           <div className="hero__meta">
-            <p>At Il Mano Gallery, we envision a world where art, fashion, and philanthropy come together to inspire connection, creativity, and meaningful change.</p>
-            <a href="/clothing" className="hero__cta" data-magnet>
-              Shop the Collection
+            <p>{H.body}</p>
+            <a href={H.buttonUrl} className="hero__cta" data-magnet>
+              {H.buttonLabel}
               <span className="arrow"><Icon name="arrow-right" size={14}/></span>
             </a>
           </div>
@@ -118,8 +121,8 @@ const Categories = ({ categories, onPickCategory }) => {
     <section className="section categories reveal" ref={ref} data-screen-label="Categories">
       <header className="section__head">
         <div>
-          <div className="section__index">Index 01 · Categories</div>
-          <h2 className="section__title">The <em>archetypes</em> of summer.</h2>
+          <div className="section__index">{HOME_COPY.categoriesHeading.eyebrow}</div>
+          <h2 className="section__title">{cmsEm(HOME_COPY.categoriesHeading.title)}</h2>
         </div>
         <a href="#collection" className="section__action" onClick={() => onPickCategory && onPickCategory(null)}>Browse all <Icon name="arrow-up-right" size={12}/></a>
       </header>
@@ -214,8 +217,8 @@ const Collection = ({ data, filter, setFilter, onOpen, onQuickAdd, wishlist, tog
     <section className="section collection reveal" ref={ref} id="collection" data-screen-label="Collection">
       <header className="section__head">
         <div>
-          <div className="section__index">Index 02 · Summer 26 Drop</div>
-          <h2 className="section__title">The <em>collection.</em></h2>
+          <div className="section__index">{HOME_COPY.collectionHeading.eyebrow}</div>
+          <h2 className="section__title">{cmsEm(HOME_COPY.collectionHeading.title)}</h2>
         </div>
         <div className="collection__controls">
           {filters.map(f => (
@@ -243,6 +246,7 @@ const Collection = ({ data, filter, setFilter, onOpen, onQuickAdd, wishlist, tog
 
 /* ─── Lookbook ─────────────────────────────────────────────── */
 const Lookbook = () => {
+  const E = HOME_COPY.editorial;
   const ref = useReveal();
   const pieceCount = window.IL_MANO_DATA.products.length;
   const mediaRef = React.useRef(null);
@@ -266,23 +270,20 @@ const Lookbook = () => {
     <section className="section lookbook reveal" ref={ref} data-screen-label="Lookbook">
       <div className="lookbook__inner">
         <div className="lookbook__media" ref={mediaRef}>
-          <img {...window.IL_MANO_DATA.imgAttrs("assets/lifestyle-bag-hoodie.png", "(max-width: 1100px) 100vw, 55vw")} alt="The Field Set — hoodie & duffle on location" loading="lazy" />
+          <img {...window.IL_MANO_DATA.imgAttrs(E.image, "(max-width: 1100px) 100vw, 55vw")} alt={E.imageAlt} loading="lazy" />
         </div>
         <aside className="lookbook__copy">
-          <div className="section__index">Index 03 · Editorial</div>
-          <p className="lookbook__quote">"<em>Dust on the leather. Sun on the cotton. A wardrobe that ages with the road.</em>"</p>
-          <p className="lookbook__body">
-            Shot on a single morning between Joshua Tree and Pioneertown — no stylist, no retouch.
-            The Heritage Duffle and Tobacco Hoodie photographed where they belong: outside.
-          </p>
+          <div className="section__index">{E.eyebrow}</div>
+          <p className="lookbook__quote">"<em>{E.quote}</em>"</p>
+          <p className="lookbook__body">{E.body}</p>
           <div className="lookbook__stat">
             <div>
               <div className="lookbook__stat-val">{pieceCount}</div>
-              <div className="lookbook__stat-lbl">pieces in drop</div>
+              <div className="lookbook__stat-lbl">{E.countLabel}</div>
             </div>
             <div>
-              <div className="lookbook__stat-val">100<span style={{fontSize:'0.5em', verticalAlign:'super'}}>%</span></div>
-              <div className="lookbook__stat-lbl">Made in LA</div>
+              <div className="lookbook__stat-val">{E.statValue}<span style={{fontSize:'0.5em', verticalAlign:'super'}}>{E.statSuffix}</span></div>
+              <div className="lookbook__stat-lbl">{E.statLabel}</div>
             </div>
           </div>
         </aside>
@@ -312,12 +313,12 @@ const Story = ({ pillars }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const statement = "We carve garments like leather — tested by use, refined by wear, and made to outlast the trend cycle.";
+  const statement = HOME_COPY.manifesto.statement;
   const words = statement.split(" ");
 
   return (
     <section className="story" id="story" ref={containerRef} data-screen-label="Story">
-      <div className="story__eyebrow">— Manifesto · Connect · Create · Inspire</div>
+      <div className="story__eyebrow">{HOME_COPY.manifesto.eyebrow}</div>
       <h2 className="story__statement editorial">
         {words.map((w, i) => (
           <React.Fragment key={i}>
