@@ -2,21 +2,24 @@
   "pieces": [
     {
       "id": "black",
-      "src": "assets/gallery/hoodie-black-front.webp",
+      "src": "/assets/gallery/hoodie-black-front.webp",
       "title": "Vanta Black",
       "meta": "Classic Hoodie · French terry · Los Angeles"
     },
     {
       "id": "brown",
-      "src": "assets/gallery/hoodie-brown-front.webp",
+      "src": "/assets/gallery/hoodie-brown-front.webp",
       "title": "Cabalo Brown",
       "meta": "Classic Hoodie · LA-dyed patina · Unisex"
     },
     {
       "id": "blue",
-      "src": "assets/gallery/hoodie-blue-front.webp",
+      "src": "/assets/gallery/hoodie-blue-front.webp",
       "title": "Electric Blue",
       "meta": "Classic Hoodie · 420 GSM · Relaxed fit"
     }
-  ]
+  ],
+  "eyebrow": "Il Mano Gallery · Exhibitions",
+  "title": "Artist *collaborations.*",
+  "viewLabel": "View the piece"
 }
