@@ -236,6 +236,7 @@ const Piece = () => {
 /* ── Exhibitions index — the /gallery page ──
    Order 1 is the featured card; the rest fall into a grid. */
 const Exhibitions = () => {
+  const G = (window.IL_MANO_CONTENT || {}).gallery;
   if (!EXH_ALL.length) return null;
   const [lead, ...rest] = EXH_ALL;
   const href = (e) => `/piece?id=${encodeURIComponent(e.id)}`;
@@ -243,8 +244,8 @@ const Exhibitions = () => {
     <section className="section exh" id="exhibitions" data-screen-label="Exhibitions">
       <header className="section__head">
         <div>
-          <div className="section__index">Il Mano Gallery · Exhibitions</div>
-          <h1 className="section__title">Artist <em>collaborations.</em></h1>
+          <div className="section__index">{G.eyebrow}</div>
+          <h1 className="section__title">{exhEm(G.title)}</h1>
         </div>
         <span className="exh__count">{exhNum(EXH_ALL.length - 1)} {EXH_ALL.length === 1 ? "piece" : "pieces"}</span>
       </header>
@@ -256,7 +257,7 @@ const Exhibitions = () => {
           <div className="exh-card__artist">Il Mano × {lead.artist}</div>
           <h3 className="exh-lead__title">{exhEm(lead.title)}</h3>
           <p className="exh-lead__body">{lead.subtitle}</p>
-          <span className="exh-card__go">View the piece <span aria-hidden="true">→</span></span>
+          <span className="exh-card__go">{G.viewLabel} <span aria-hidden="true">→</span></span>
         </div>
       </a>
 
