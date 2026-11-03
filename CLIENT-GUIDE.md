@@ -8,8 +8,8 @@ You edit the site from a web dashboard — no code, no terminal.
 2. Click **Login with GitHub** and approve. You need a free GitHub account that the
    developer has added as a collaborator on the repo (GitHub only lets people with
    write access save changes).
-3. Edit something, press **Publish → Publish now**. The live site updates in about a
-   minute (Vercel redeploys). Refresh to confirm.
+3. Edit something, press **Publish → Publish now**. This saves to GitHub. Once the owner-authorized Vercel connection is repaired,
+   a successful production build updates the live site. Saving is not the same as going live.
 
 If the site doesn't update after a few minutes, a typo may have failed the safety check
 (`npm run check`, run on every deploy). The previous version stays live; tell the developer.
@@ -20,8 +20,10 @@ If the site doesn't update after a few minutes, a typo may have failed the safet
 |---|---|
 | **Products** | name, price, colours + photos, sizes (tick *Sold out*), description, specs, care, delivery note, display order |
 | **Store & Home Page → Shipping & tax** | free-shipping threshold, flat rate, tax rate |
-| **Store & Home Page → Home page** | scrolling banner, Connect/Create/Inspire text, categories, special cards |
-| **Gallery & Our Story** | gallery photos + captions, the Our Story vision sentence and values |
+| **Store & Home Page → Home page** | hero image/headline/button, editorial, section headings, manifesto, scrolling banner, Connect/Create/Inspire text, categories, special cards, clothing title |
+| **Collaborations / gallery pieces** | add, edit or remove artist collaborations; photos, films, text, status, links and order |
+| **Gallery & Our Story** | gallery landing heading; Our Story vision, values, paragraphs, images and buttons |
+| **Footer** | shared footer text, links and social accounts |
 | **Info Pages** | FAQ, Shipping & Returns, Terms, Privacy, Code of Conduct |
 
 **Add a product** — Products → *New Product*. Give it a unique lowercase **Product ID** (never
@@ -40,9 +42,7 @@ copies are generated automatically on every deploy. The `uploads/` folder in the
 
 ## Not in the dashboard (needs a developer)
 
-Hero headline and footer text (`sections.jsx`), the Our Story paragraphs (`our-story.jsx`), gallery
-motion, page titles/meta descriptions (each `.html`), payment behaviour, email templates (`api/`),
-keys, and the domain.
+Page layout, animation, navigation structure, page metadata, checkout behaviour, email templates, credentials and domains still need a developer. The gallery uses two existing piece layouts; editing content does not create a new layout.
 
 ## 5. Orders (no code needed)
 
@@ -60,5 +60,5 @@ the domain, or anything in `api/`. Env-var changes in Vercel only apply after a 
 ## Known gotcha
 
 "The Field Set" bundle card on the home page displays $340 but currently adds a single
-Classic Hoodie ($100) to the bag. Don't advertise bundle prices until a developer makes the
+product's current normal price to the bag. Don't advertise bundle prices until a developer makes the
 bundle a real product.
