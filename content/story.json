@@ -17,5 +17,26 @@
       "numeral": "IV",
       "label": "Deeply human"
     }
-  ]
+  ],
+  "missionTitle": "Art has the power *to unite.*",
+  "inspirationTitle": "The power held *within our hands.*",
+  "closingTitle": "Made by hand. *Made to endure.*",
+  "missionParagraphs": [
+    "Il Mano means *the hand* — where every piece begins and where it ends. Each garment is cut, dyed and finished by hand in Los Angeles, made to be worn, kept and passed on.",
+    "Art gives us the language, fashion gives it form, and philanthropy gives it a purpose beyond the garment: to bring people closer to each other, and to the work of making something that lasts."
+  ],
+  "inspirationParagraphs": [
+    "Five centuries ago, Michelangelo painted the smallest gap in art history — a few inches of air between two fingers, charged with everything that follows. It is the image behind our name: creation as a gesture passed from one hand to another.",
+    "We keep that gap open on purpose. It is where the work, and the people who make it and wear it, meet."
+  ],
+  "visionLabel": "At IL MANO Gallery,",
+  "handsLine1": "To make the world a better place,",
+  "handsLine2": "one hand at a time.",
+  "inspirationImage": "/assets/creation-of-adam.jpg",
+  "inspirationImageAlt": "The Creation of Adam, Michelangelo — Sistine Chapel ceiling",
+  "inspirationCaption": "Michelangelo Buonarroti · The Creation of Adam · Sistine Chapel ceiling · c. 1508–1512",
+  "shopLabel": "Shop the collection",
+  "shopUrl": "/clothing",
+  "galleryLabel": "Visit the gallery",
+  "galleryUrl": "/gallery"
 }
