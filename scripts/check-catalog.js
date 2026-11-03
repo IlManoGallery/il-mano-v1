@@ -21,7 +21,7 @@ const checkFile = (ref, where) => {
   if (!ref) return err(`${where}: image path is missing`);
   const abs = path.join(root, ref);
   if (!fs.existsSync(abs)) return err(`${where}: file not found → ${ref}`);
-  if (!optimized[ref]) warn(`${where}: ${ref} has no small mobile versions — run \`npm run images\``);
+  if (!optimized[String(ref).replace(/^\//, "")]) warn(`${where}: ${ref} has no small mobile versions — run \`npm run images\``);
 };
 
 const { settings, products, gridCards, categories } = data;
