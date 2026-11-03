@@ -26,7 +26,7 @@
       "num": "01",
       "name": "Hoodies",
       "key": "hoodies",
-      "img": "assets/hoodie-black-back.webp",
+      "img": "/assets/hoodie-black-back.webp",
       "size": "lg",
       "count": "1 piece"
     },
@@ -34,7 +34,7 @@
       "num": "02",
       "name": "T-Shirts",
       "key": "t-shirts",
-      "img": "assets/hoodie-white-front.webp",
+      "img": "/assets/hoodie-white-front.webp",
       "size": "md",
       "count": "Coming soon"
     },
@@ -42,7 +42,7 @@
       "num": "03",
       "name": "Hats",
       "key": "hats",
-      "img": "assets/cap-brown.webp",
+      "img": "/assets/cap-brown.webp",
       "size": "sm",
       "count": "1 piece"
     },
@@ -50,7 +50,7 @@
       "num": "04",
       "name": "Bags",
       "key": "bags",
-      "img": "assets/bag-duffle.png",
+      "img": "/assets/bag-duffle.png",
       "size": "sm",
       "count": "1 piece"
     },
@@ -58,7 +58,7 @@
       "num": "05",
       "name": "Gallery",
       "key": "gallery",
-      "img": "assets/brand-tags.webp",
+      "img": "/assets/brand-tags.webp",
       "size": "sm",
       "count": "Bespoke"
     }
@@ -70,8 +70,41 @@
       "badge": "Bundle",
       "overrideName": "The Field Set",
       "overridePrice": 340,
-      "overrideImg": "assets/lifestyle-bag-hoodie.png",
+      "overrideImg": "/assets/lifestyle-bag-hoodie.png",
       "overrideSub": "Hoodie + Duffle"
     }
-  ]
+  ],
+  "hero": {
+    "image": "/assets/0619-0957_losangeles.jpg",
+    "imageAlt": "Summer 2026 — California iconography",
+    "titleLine1": "American",
+    "titleLine2": "Iconography.",
+    "body": "At Il Mano Gallery, we envision a world where art, fashion, and philanthropy come together to inspire connection, creativity, and meaningful change.",
+    "buttonLabel": "Shop the Collection",
+    "buttonUrl": "/clothing"
+  },
+  "categoriesHeading": {
+    "eyebrow": "Index 01 · Categories",
+    "title": "The *archetypes* of summer."
+  },
+  "collectionHeading": {
+    "eyebrow": "Index 02 · Summer 26 Drop",
+    "title": "The *collection.*"
+  },
+  "editorial": {
+    "image": "/assets/lifestyle-bag-hoodie.png",
+    "imageAlt": "The Field Set — hoodie & duffle on location",
+    "eyebrow": "Index 03 · Editorial",
+    "quote": "Dust on the leather. Sun on the cotton. A wardrobe that ages with the road.",
+    "body": "Shot on a single morning between Joshua Tree and Pioneertown — no stylist, no retouch. The Heritage Duffle and Tobacco Hoodie photographed where they belong: outside.",
+    "countLabel": "pieces in drop",
+    "statValue": "100",
+    "statSuffix": "%",
+    "statLabel": "Made in LA"
+  },
+  "manifesto": {
+    "eyebrow": "— Manifesto · Connect · Create · Inspire",
+    "statement": "We carve garments like leather — tested by use, refined by wear, and made to outlast the trend cycle."
+  },
+  "clothingTitle": "CLOTHING"
 }
