@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>IL Mano Gallery | Video Experience</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #101010;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      letter-spacing: 3px;
+      margin-bottom: 40px;
+    }
+    video {
+      width: 100%;
+      max-height: 75vh;
+      background: black;
+      border-radius: 8px;
+    }
+    p { color: #aaa; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>IL MANO GALLERY</h1>
+    <video id="video" controls playsinline preload="metadata">
+    </video>
+    <p id="message"></p>
+  </main>
+  <script>
+    const id = new URLSearchParams(
+      window.location.search
+    ).get("id");
+
+    const valid = /^(0[1-9])$/.test(id || "");
+    const player = document.getElementById("video");
+    const message = document.getElementById("message");
+
+    if (valid) {
+      player.src = "/assets/videos/" + id + ".mp4";
+      player.addEventListener("error", () => {
+        message.textContent = "Video unavailable.";
+      });
+    } else {
+      message.textContent = "Invalid video link.";
+      player.hidden = true;
+    }
+  </script>
+</body>
+</html>
