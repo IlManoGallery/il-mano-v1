@@ -2,7 +2,7 @@
   "categoryKey": "bags",
   "defaultColor": "saddle",
   "badge": "Limited",
-  "price": 700,
+  "price": 4500,
   "name": "Legacy Duffle",
   "slug": "heritage-duffle",
   "order": 3,
@@ -44,7 +44,7 @@
       "v": "Heavy canvas, two interior pockets"
     }
   ],
-  "reviews": 22,
+  "reviews": 21,
   "id": "bag-duffle",
   "description": "A weekender carved from full grain saddle leather, finished with solid brass hardware that develops its own patina with travel. Internal canvas lining, debossed ILMANO patch, removable shoulder strap with luggage tag. Made for the long road.",
   "rating": 5
