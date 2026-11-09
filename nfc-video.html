@@ -71,7 +71,8 @@
     const message = document.getElementById("message");
 
     if (valid) {
-      player.src = "https://ilmanogallery.com/assets/videos/" + id + ".mp4";
+      player.src = "https://ilmanogallery.com/assets/videos/" + id + ".mp4";      
+player.poster = "https://ilmanogallery.com/assets/videos/" + id + ".jpg";
       player.addEventListener("error", () => {
         message.textContent = "Video unavailable.";
       });
