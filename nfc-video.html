@@ -50,9 +50,143 @@
 .home-logo:hover {
   opacity: 0.6;
 }
+/* IL MANO opening animation */
+:root {
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ECE8E2;
+  transition: background 0.01s;
+}
+
+.intro-loader__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  max-width: 100vw;
+}
+
+.intro-loader__word {
+  display: flex;
+  align-items: flex-start;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: min(64px, 11vw);
+  line-height: 1.2;
+  color: #15120F;
+  margin-right: -0.5em;
+}
+
+.intro-loader__word .l {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  margin-right: 0.5em;
+}
+
+.intro-loader__word .l i {
+  display: block;
+  font-style: normal;
+  transform: translateY(105%);
+}
+
+.intro-loader__word .gap {
+  display: block;
+  width: 0.5em;
+}
+
+.intro-loader__rule {
+  width: min(360px, 70vw);
+  height: 1px;
+  background: rgba(21,18,15,0.45);
+  transform: scaleX(0);
+}
+
+.intro-loader__tag {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: #6A6158;
+  margin-right: -0.34em;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.intro-run .intro-loader__word .l i {
+  animation: introLetter 0.95s cubic-bezier(.2,.75,.1,1) both;
+}
+
+.intro-run .intro-loader__word .l:nth-child(1) i { animation-delay: 0s; }
+.intro-run .intro-loader__word .l:nth-child(2) i { animation-delay: 0.07s; }
+.intro-run .intro-loader__word .l:nth-child(4) i { animation-delay: 0.14s; }
+.intro-run .intro-loader__word .l:nth-child(5) i { animation-delay: 0.21s; }
+.intro-run .intro-loader__word .l:nth-child(6) i { animation-delay: 0.28s; }
+.intro-run .intro-loader__word .l:nth-child(7) i { animation-delay: 0.35s; }
+
+.intro-run .intro-loader__rule {
+  animation: introRule 0.8s cubic-bezier(.65,0,.35,1) 0.55s both;
+}
+
+.intro-run .intro-loader__tag {
+  animation: introTag 0.7s var(--ease) 0.85s both;
+}
+
+.intro-run .intro-loader__group {
+  animation: introGroupOut 0.6s var(--ease-io) 1.75s both;
+}
+
+@keyframes introLetter {
+  to { transform: translateY(0); }
+}
+
+@keyframes introRule {
+  to { transform: scaleX(1); }
+}
+
+@keyframes introTag {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes introGroupOut {
+  to { opacity: 0; transform: translateY(-28px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-loader { display: none; }
+}
   </style>
 </head>
 <body>
+  <div id="intro-loader" class="intro-loader" aria-hidden="true">
+    <div class="intro-loader__group">
+      <div class="intro-loader__word">
+        <span class="l"><i>I</i></span>
+        <span class="l"><i>L</i></span>
+        <span class="gap"></span>
+        <span class="l"><i>M</i></span>
+        <span class="l"><i>A</i></span>
+        <span class="l"><i>N</i></span>
+        <span class="l"><i>O</i></span>
+      </div>
+      <div class="intro-loader__rule"></div>
+      <div class="intro-loader__tag">
+        Summer · 2026 — Los Angeles
+      </div>
+    </div>
+  </div>
+
   <main>
     <h1>
   <a href="/" class="home-logo">IL MANO GALLERY</a>
@@ -80,6 +214,41 @@ player.poster = "https://ilmanogallery.com/assets/videos/" + id + ".jpg";
       message.textContent = "Invalid video link.";
       player.hidden = true;
     }
+  </script>
+
+  <script>
+    (function () {
+      const loader = document.getElementById("intro-loader");
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        loader.remove();
+        return;
+      }
+
+      function startIntro() {
+        document.documentElement.classList.add("intro-run");
+
+        // Reveal the video page after the lettering finishes.
+        setTimeout(function () {
+          loader.style.background = "transparent";
+          loader.style.pointerEvents = "none";
+        }, 2350);
+
+        // Remove the introduction completely.
+        setTimeout(function () {
+          loader.remove();
+        }, 2500);
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        Promise.race([
+          document.fonts.ready,
+          new Promise(resolve => setTimeout(resolve, 2000))
+        ]).then(startIntro);
+      } else {
+        startIntro();
+      }
+    })();
   </script>
 </body>
 </html>
