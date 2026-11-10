@@ -753,30 +753,50 @@ font-size: clamp(32px, 12vw, 70px);    letter-spacing: 0.02em;
     </div>
   </footer>
 
-  <script>
-    const id = new URLSearchParams(
-      window.location.search
-    ).get("id");
+ 
+<script>
+  const tagId = new URLSearchParams(
+    window.location.search
+  ).get("id");
 
-    const valid = /^(0[1-9])$/.test(id || "");
-    const player = document.getElementById("video");
-    const message = document.getElementById("message");
-  
-if (valid) {
-  // Editions 05–09 use a portrait player; 01–04 remain unchanged.
-  if (Number(id) >= 5) player.classList.add("video--portrait");
-  document.getElementById("edition-number").textContent = "EDITION " + id + " / 09";
+  const editionMap = {
+    "a02306a7-eeb4-11f0-87c7-109836a15c19": "01",
+    "a0230a6a-eeb4-11f0-87c7-109836a15c19": "02",
+    "a0230bae-eeb4-11f0-87c7-109836a15c19": "03",
+    "a0230d18-eeb4-11f0-87c7-109836a15c19": "04",
+    "a0230de8-eeb4-11f0-87c7-109836a15c19": "05",
+    "a0230ebc-eeb4-11f0-87c7-109836a15c19": "06",
+    "a0230f88-eeb4-11f0-87c7-109836a15c19": "07",
+    "a023104e-eeb4-11f0-87c7-109836a15c19": "08",
+    "a023111b-eeb4-11f0-87c7-109836a15c19": "09"
+  };
 
-  player.src = "https://ilmanogallery.com/assets/videos/" + id + ".mp4";     
-player.poster = "https://ilmanogallery.com/assets/videos/" + id + ".jpg";
-      player.addEventListener("error", () => {
-        message.textContent = "Video unavailable.";
-      });
-    } else {
-      message.textContent = "Invalid video link.";
-      player.hidden = true;
+  const id = editionMap[tagId];
+  const player = document.getElementById("video");
+  const message = document.getElementById("message");
+
+  if (id) {
+    if (Number(id) >= 5) {
+      player.classList.add("video--portrait");
     }
-  </script>
+
+    document.getElementById("edition-number").textContent =
+      "EDITION " + id + " / 09";
+
+    player.src =
+      "https://ilmanogallery.com/assets/videos/" + id + ".mp4";
+
+    player.poster =
+      "https://ilmanogallery.com/assets/videos/" + id + ".jpg";
+
+    player.addEventListener("error", () => {
+      message.textContent = "Video unavailable.";
+    });
+  } else {
+    message.textContent = "Invalid video link.";
+    player.hidden = true;
+  }
+</script>
 
   <script>
     (function () {
