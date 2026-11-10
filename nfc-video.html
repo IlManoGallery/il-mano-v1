@@ -518,6 +518,42 @@ font-size: clamp(32px, 12vw, 70px);    letter-spacing: 0.02em;
     gap: 16px;
   }
 }
+  
+/* NFC Introduction */
+.nfc-introduction {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  color: #48423d;
+}
+
+.nfc-introduction p {
+  margin: 0 0 22px;
+  color: #48423d;
+}
+}
+
+.nfc-introduction p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .nfc-introduction {
+    padding: 44px 24px 36px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .nfc-introduction p {
+    margin-bottom: 20px;
+  }
+}
 </style>
 </head>
 <body>
@@ -580,6 +616,24 @@ font-size: clamp(32px, 12vw, 70px);    letter-spacing: 0.02em;
 </nav>
 
 <main>
+  <section class="nfc-introduction">
+  <p>
+    This is an authentic Il Mano Gallery wearable art piece,
+    created in collaboration with world-renowned artist
+    Nelson De La Nuez.
+  </p>
+
+  <p>
+    Your piece is part of a collection proudly supporting
+    the Phase One Foundation.
+  </p>
+
+  <p>
+    Below, you can discover your piece coming to life.
+    Together, we can make a difference, one helping hand
+    at a time.
+  </p>
+</section>
 <video id="video" controls playsinline preload="auto">
 </video>
 
