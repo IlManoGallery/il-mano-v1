@@ -34,6 +34,15 @@
       background: black;
       border-radius: 2px;
     }
+    /* Portrait player for Editions 05–09 only */
+    video.video--portrait {
+      display: block;
+      width: min(100%, 420px, 42.1875vh);
+      aspect-ratio: 9 / 16;
+      height: auto;
+      margin-inline: auto;
+      object-fit: contain;
+    }
     p { color: #aaa; }
 .archive-meta {
   display: flex;
@@ -754,6 +763,8 @@ font-size: clamp(32px, 12vw, 70px);    letter-spacing: 0.02em;
     const message = document.getElementById("message");
   
 if (valid) {
+  // Editions 05–09 use a portrait player; 01–04 remain unchanged.
+  if (Number(id) >= 5) player.classList.add("video--portrait");
   document.getElementById("edition-number").textContent = "EDITION " + id + " / 09";
 
   player.src = "https://ilmanogallery.com/assets/videos/" + id + ".mp4";     
