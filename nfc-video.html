@@ -256,6 +256,25 @@
     font-size: 29px;
   }
 }
+  
+/* NFC Navigation Backdrop */
+.nfc-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.nfc-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
 /* NFC Navigation Drawer */
 .nfc-drawer {
   position: fixed;
@@ -593,7 +612,8 @@ font-size: clamp(32px, 12vw, 70px);    letter-spacing: 0.02em;
 
   <span class="nfc-nav__spacer" aria-hidden="true"></span>
 </header>
-
+<!-- NFC Navigation Backdrop -->
+<div class="nfc-backdrop" id="nfc-backdrop" aria-hidden="true"></div>
 <!-- NFC Mobile Navigation Drawer -->
 <nav class="nfc-drawer" id="nfc-menu"
      aria-label="Main navigation" inert>
@@ -832,10 +852,11 @@ player.poster = "https://ilmanogallery.com/assets/videos/" + id + ".jpg";
     const menuButton = document.getElementById("nfc-menu-button");
     const closeButton = document.getElementById("nfc-menu-close");
     const drawer = document.getElementById("nfc-menu");
-
+    const backdrop = document.getElementById("nfc-backdrop");
     function openMenu() {
       drawer.inert = false;
       drawer.classList.add("is-open");
+      backdrop.classList.add("is-open");
       menuButton.setAttribute("aria-expanded", "true");
       menuButton.setAttribute("aria-label", "Close navigation");
       document.body.style.overflow = "hidden";
@@ -844,6 +865,7 @@ player.poster = "https://ilmanogallery.com/assets/videos/" + id + ".jpg";
 
     function closeMenu() {
       drawer.classList.remove("is-open");
+      backdrop.classList.remove("is-open");
       drawer.inert = true;
       menuButton.setAttribute("aria-expanded", "false");
       menuButton.setAttribute("aria-label", "Open navigation");
@@ -860,6 +882,7 @@ player.poster = "https://ilmanogallery.com/assets/videos/" + id + ".jpg";
     });
 
     closeButton.addEventListener("click", closeMenu);
+    backdrop.addEventListener("click", closeMenu);
 
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" &&
