@@ -13,5 +13,17 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "verify.ilmanogallery.com"
+        }
+      ],
+      "destination": "/nfc-video"
+    }
   ]
 }
