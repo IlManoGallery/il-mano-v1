@@ -181,7 +181,165 @@
 @media (prefers-reduced-motion: reduce) {
   .intro-loader { display: none; }
 }
+/* IL MANO NFC Header */
+.nfc-nav {
+  position: relative;
+  width: 100%;
+  min-height: 86px;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  padding: 12px 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #e9e6e1;
+  z-index: 100;
+}
 
+.nfc-nav__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  text-decoration: none;
+  color: #15120f;
+  line-height: 1;
+}
+
+.nfc-nav__logo-main {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.nfc-nav__logo-sub {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  margin-top: 4px;
+  padding-left: 0.35em;
+}
+
+.nfc-nav__menu {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nfc-nav__menu span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: #15120f;
+}
+
+.nfc-nav__spacer {
+  width: 44px;
+}
+
+@media (max-width: 600px) {
+  .nfc-nav {
+    min-height: 76px;
+    padding: 10px 16px;
+  }
+
+  .nfc-nav__logo-main {
+    font-size: 29px;
+  }
+}
+/* NFC Navigation Drawer */
+.nfc-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(400px, 88vw);
+  height: 100vh;
+  height: 100dvh;
+  background: #f5f3ef;
+  color: #15120f;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  transform: translateX(-105%);
+  visibility: hidden;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.45s;
+  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.08);
+}
+
+.nfc-drawer.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.nfc-drawer__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  border-bottom: 1px solid #d8d3cb;
+  padding-bottom: 24px;
+}
+
+#nfc-menu-close {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.nfc-drawer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 52px;
+}
+
+.nfc-drawer__links a {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(34px, 7vw, 48px);
+  font-weight: 400;
+  line-height: 1;
+  color: #15120f;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.nfc-drawer__links a:hover {
+  opacity: 0.5;
+}
+
+.nfc-drawer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid #d8d3cb;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: #77736e;
+}
+
+@media (max-width: 600px) {
+  .nfc-drawer {
+    padding: 24px;
+  }
+}
 /* IL MANO footer */
 .il-footer {
   background: #0a0a0a;
@@ -380,11 +538,48 @@ font-size: clamp(32px, 12vw, 70px);    letter-spacing: 0.02em;
       </div>
     </div>
   </div>
+ 
+<!-- IL MANO NFC Navigation -->
+<header class="nfc-nav">
+  <button class="nfc-nav__menu" id="nfc-menu-button"
+          type="button" aria-label="Open navigation"
+          aria-expanded="false" aria-controls="nfc-menu">
+    <span></span>
+    <span></span>
+  </button>
 
-  <main>
-    <h1>
-  <a href="/" class="home-logo">IL MANO GALLERY</a>
-</h1>    
+  <a href="/" class="nfc-nav__logo">
+    <span class="nfc-nav__logo-main">IL MANO</span>
+    <span class="nfc-nav__logo-sub">GALLERY</span>
+  </a>
+
+  <span class="nfc-nav__spacer" aria-hidden="true"></span>
+</header>
+
+<!-- NFC Mobile Navigation Drawer -->
+<nav class="nfc-drawer" id="nfc-menu"
+     aria-label="Main navigation" inert>
+  <div class="nfc-drawer__top">
+    <span>IL MANO GALLERY</span>
+    <button type="button" id="nfc-menu-close"
+            aria-label="Close navigation">✕</button>
+  </div>
+
+  <div class="nfc-drawer__links">
+    <a href="/">Home</a>
+    <a href="/clothing">Clothing</a>
+    <a href="/gallery">Gallery</a>
+    <a href="/our-story">Our Story</a>
+    <a href="/faq">FAQ</a>
+  </div>
+
+  <div class="nfc-drawer__bottom">
+    <span>FALL–WINTER 2026</span>
+    <span>LOS ANGELES</span>
+  </div>
+</nav>
+
+<main>
 <video id="video" controls playsinline preload="auto">
 </video>
 
@@ -574,5 +769,50 @@ player.poster = "https://ilmanogallery.com/assets/videos/" + id + ".jpg";
     }
   });
 </script>
+
+<script>
+  // IL MANO NFC navigation
+  (function () {
+    const menuButton = document.getElementById("nfc-menu-button");
+    const closeButton = document.getElementById("nfc-menu-close");
+    const drawer = document.getElementById("nfc-menu");
+
+    function openMenu() {
+      drawer.inert = false;
+      drawer.classList.add("is-open");
+      menuButton.setAttribute("aria-expanded", "true");
+      menuButton.setAttribute("aria-label", "Close navigation");
+      document.body.style.overflow = "hidden";
+      closeButton.focus();
+    }
+
+    function closeMenu() {
+      drawer.classList.remove("is-open");
+      drawer.inert = true;
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open navigation");
+      document.body.style.overflow = "";
+      menuButton.focus();
+    }
+
+    menuButton.addEventListener("click", function () {
+      if (drawer.classList.contains("is-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    closeButton.addEventListener("click", closeMenu);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" &&
+          drawer.classList.contains("is-open")) {
+        closeMenu();
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
