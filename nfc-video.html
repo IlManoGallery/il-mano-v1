@@ -35,6 +35,22 @@
       border-radius: 8px;
     }
     p { color: #aaa; }
+.archive-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: #77736e;
+  text-align: left;
+}
+
+.archive-meta span:last-child {
+  text-align: right;
+}
 .home-logo {
   font-family: "Cormorant Garamond", "Times New Roman", serif;
   font-size: 22px;
@@ -368,10 +384,16 @@ font-size: clamp(32px, 12vw, 70px);    letter-spacing: 0.02em;
   <main>
     <h1>
   <a href="/" class="home-logo">IL MANO GALLERY</a>
-</h1>
-    <video id="video" controls playsinline preload="auto">
-    </video>
-    <p id="message"></p>
+</h1>    
+<video id="video" controls playsinline preload="auto">
+</video>
+
+<div class="archive-meta">
+  <span>IL MANO ARCHIVE</span>
+  <span id="edition-number">EDITION -- / 09</span>
+</div>
+
+<p id="message"></p>
   </main>
 
   <!-- IL MANO Footer -->
@@ -459,9 +481,11 @@ font-size: clamp(32px, 12vw, 70px);    letter-spacing: 0.02em;
     const valid = /^(0[1-9])$/.test(id || "");
     const player = document.getElementById("video");
     const message = document.getElementById("message");
+  
+if (valid) {
+  document.getElementById("edition-number").textContent = "EDITION " + id + " / 09";
 
-    if (valid) {
-      player.src = "https://ilmanogallery.com/assets/videos/" + id + ".mp4";      
+  player.src = "https://ilmanogallery.com/assets/videos/" + id + ".mp4";     
 player.poster = "https://ilmanogallery.com/assets/videos/" + id + ".jpg";
       player.addEventListener("error", () => {
         message.textContent = "Video unavailable.";
