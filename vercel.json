@@ -18,11 +18,13 @@
     {
       "source": "/",
       "has": [
-        {
-          "type": "host",
-          "value": "verify.ilmanogallery.com"
-        }
+       {
+  "type": "header",
+  "key": "host",
+  "value": "verify.ilmanogallery.com"
+}
       ],
-    "destination": "/nfc-video.html"    }
+    "destination": "/nfc-video"   
+    }
   ]
 }
