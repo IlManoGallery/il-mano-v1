@@ -208,8 +208,8 @@ const App = () => {
   return (
     <>
       <CookieNotice />
-      <NewsletterSlideIn />
-      <Nav cartCount={totalQty} onOpenCart={() => setCartOpen(true)} transparent={false} hideUntilScroll />
+      <NewsletterSlideIn />     
+<Nav cartCount={totalQty} onOpenCart={() => setCartOpen(true)} transparent={true} />
 
       <main>
         <Hero />
