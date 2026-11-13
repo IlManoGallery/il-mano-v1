@@ -257,6 +257,16 @@ html.intro:not(.intro-done) .news-slide { display: none; }
               border-color 0.45s var(--ease), backdrop-filter 0.45s var(--ease);
   border-bottom: 1px solid transparent;
 }
+/* Improve navigation visibility over bright hero images */
+.nav:not(.scrolled):not(.solid) {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.38) 0%,
+    rgba(0, 0, 0, 0.12) 65%,
+    transparent 100%
+  );
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
 .nav--hidden { transform: translateY(-100%); }
 .nav.scrolled,
 .nav.solid {
