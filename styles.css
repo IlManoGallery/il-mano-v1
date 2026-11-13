@@ -277,6 +277,18 @@ html.intro:not(.intro-done) .news-slide { display: none; }
   -webkit-backdrop-filter: none;
   border-bottom-color: rgba(0, 0, 0, 0.08);
 }
+
+/* Desktop hover — identical to scrolled header */
+@media (min-width: 821px) and (hover: hover) {
+  .nav:not(.scrolled):not(.solid):hover {
+    background: #ffffff;
+    color: #0a0a0a;
+    text-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+  }
+}
 .nav__group {
   display: flex; align-items: center; gap: 28px;
   font-size: 10.5px;
