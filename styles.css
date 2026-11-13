@@ -266,6 +266,7 @@ html.intro:not(.intro-done) .news-slide { display: none; }
     transparent 100%
   );
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+     border-bottom: none;
 }
 .nav--hidden { transform: translateY(-100%); }
 .nav.scrolled,
