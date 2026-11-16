@@ -30,7 +30,7 @@
   /* Layout */
   --pad-x:    clamp(20px, 4vw, 56px);
   --max-w:    1680px;
-  --nav-h:    62px;
+  --nav-h:    80px;
 }
 
 /* Dark surface variant */
