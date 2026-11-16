@@ -291,7 +291,7 @@ html.intro:not(.intro-done) .news-slide { display: none; }
 }
 .nav__group {
   display: flex; align-items: center; gap: 28px;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 450;
@@ -356,7 +356,14 @@ html.intro:not(.intro-done) .news-slide { display: none; }
   font-size: 10px;
   opacity: 0.7;
 }
-
+/* Desktop bag icon sizing */
+@media (min-width: 821px) {
+  .nav__bag svg,
+  .nav__bag .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
 /* ─── Hero ─────────────────────────────────────────────────── */
 .hero {
   /* reveal offsets — repeat visits start at the headline (no loader/image/nav choreography) */
